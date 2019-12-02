@@ -1,1 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+CREATE TABLE IF NOT EXISTS `mydb`.`USER` (
+  `Idx` INT NOT NULL AUTO_INCREMENT,
+  `UserEmail` VARCHAR(45) NOT NULL,
+  `UserName` VARCHAR(45) NOT NULL,
+  `UserPaasword` VARCHAR(45) NOT NULL,
+  `createdAt` DATE NOT NULL,
+  `updatedAt` DATE NULL,
+  PRIMARY KEY (`Idx`),
+  UNIQUE INDEX `UserEmail_UNIQUE` (`UserEmail` ASC) VISIBLE)
+ENGINE = InnoDB;
+-->
+<mapper namespace="user">
+	<!-- primary key Idx -->
+	<insert id="CraeteUser" parameterType="user">
+		INSERT INTO USER (
+			UserEmail,
+			UserName,
+			UserPassword,
+			createdAt,
+			updatedAt
+		) VALUES (
+			#{UserEmail},
+			#{UserName},
+			#{UserPassword},
+			#{createdAt},
+			#{updatedAt}
+		);
+	</insert>
+	<!-- Login User Select by Email -->
+	<select id='LoginUser' parameterType="user" resultType="user">
+		SELECT * FROM USER WHERE UserEmail=#{UserEmail}
+	</select>
+	
+	
+</mapper>
