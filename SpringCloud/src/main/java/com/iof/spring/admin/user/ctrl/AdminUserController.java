@@ -34,6 +34,7 @@ public class AdminUserController {
 	 */
 	@RequestMapping(value="/list")
 	public String UserList(Model model) {
+		
 		return "";
 	}
 	

@@ -1,5 +1,7 @@
 package com.iof.spring.admin.user.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -31,5 +33,17 @@ public class AdminUserServiceImpl implements AdminUserService {
 	public boolean DeleteUser(UserVO user) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public List<UserVO> list() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public UserVO Detail(UserVO user) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

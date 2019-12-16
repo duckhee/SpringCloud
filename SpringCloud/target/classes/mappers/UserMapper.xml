@@ -28,7 +28,7 @@ ENGINE = InnoDB;
 			#{UserEmail},
 			#{UserName},
 			#{UserPassword},
-			#{UserLevel}
+			5,
 			#{createdAt},
 			#{updatedAt}
 		);
@@ -37,6 +37,20 @@ ENGINE = InnoDB;
 	<select id='LoginUser' parameterType="user" resultType="user">
 		SELECT * FROM USER WHERE UserEmail=#{UserEmail}
 	</select>
+	<!-- Email Checking Info -->
+	<select id="EmailCheck" parameterType="String" resultType="user">
+		SELECT * FROM USER WEHRE UserEmail=#{UserEmail}
+	</select>
+	<!-- Detail User Info -->
+	<select id='DetailUser' parameterType="user" resultType="user">
+		SELECT * FROM USER WHERE Idx=${Idx}
+	</select>
+	
+	<!-- Member list Info -->
+	<select id="listUser" parameterType="user" resultType="user">
+		SELECT * FROM USER ORDER BY CreatedAt DESC
+	</select>
+	
 	
 	
 </mapper>
