@@ -6,7 +6,8 @@
  <configuration>
  	
  	<typeAliases>
- 		
+ 		<!-- Resource make aliases -->
+ 		<typeAlias type="com.iof.spring.user.model.VO.UserVO" alias ="user"/>
  	</typeAliases>
  
  </configuration>
