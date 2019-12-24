@@ -16,6 +16,7 @@ public class IndexController {
 	@RequestMapping("/admin")
 	public String AdminHome() {
 		System.out.println("Admin Home Ctrl redirect login Page");
-		return "redirect:/admin/Users/Login";
+		//return "redirect:/admin/Users/Login";
+		return "Admin/index";
 	}
 }
