@@ -34,6 +34,7 @@ public class AdminUserController {
 	 */
 	@RequestMapping(value="/Login", method=RequestMethod.GET)
 	public String UserLogIn(Model model) {
+		System.out.println("Admin User Login Page");
 		return "Admin/User/LogInPage";
 	}
 	
@@ -45,6 +46,7 @@ public class AdminUserController {
 	 */
 	@RequestMapping(value="/Login", method=RequestMethod.POST)
 	public String UserLogInDo(Model model) {
+		System.out.println("Admin User Login Do");
 		return "";
 		
 	}
@@ -57,6 +59,7 @@ public class AdminUserController {
 	 */
 	@RequestMapping(value="/LogOut", method=RequestMethod.POST)
 	public String UserLogOutDo(Model model) {
+		System.out.println("Admin User LogOut");
 		return "";
 	}
 	
@@ -67,7 +70,7 @@ public class AdminUserController {
 	 */
 	@RequestMapping(value="/list")
 	public String UserList(Model model) {
-		
+		System.out.println("Admin User List Page");
 		return "Admin/User/ListPage";
 	}
 	
@@ -78,6 +81,7 @@ public class AdminUserController {
 	 */
 	@RequestMapping(value="/Profile", method=RequestMethod.GET)
 	public String UserProfilePage(Model model) {
+		System.out.println("Admin User Profile Page");
 		return "Admin/User/ProfilePage";
 	}
 	
@@ -88,6 +92,7 @@ public class AdminUserController {
 	 */
 	@RequestMapping(value="/EditPage", method=RequestMethod.GET)
 	public String UserEditPage(Model model) {
+		System.out.println("Admin User Edit Page");
 		return "Admin/User/EditPage";
 	}
 	
@@ -98,6 +103,7 @@ public class AdminUserController {
 	 */
 	@RequestMapping(value="/EditDo", method=RequestMethod.POST)
 	public String UserEditDo(Model model) {
+		System.out.println("Admin User Edit Do");
 		return "redirect:/";
 	}
 	

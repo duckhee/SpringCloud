@@ -15,8 +15,38 @@ CREATE TABLE IF NOT EXISTS `mydb`.`USER` (
 ENGINE = InnoDB;
 -->
 <mapper namespace="com.iof.spring.admin.Mapper.user">
-
+	<!-- Insert User -->
+	<insert id="AdminRegisteUser" parameterType="user">
+		INSERT INTO users (
+			id, 
+			UserEmail, 
+			UserName, 
+			UserPassword, 
+			UserLevel, 
+			createdAt, 
+			updatedAt
+		) 
+		VALUES (
+			#{id}, 
+			#{UserEmail}, 
+			#{UserName}, 
+			#{UserPassword}, 
+			#{UserLevel}, 
+			#{createdAt}, 
+			#{updatedAt} 
+		)
+	</insert>
 	
+	<!-- Count User -->
+	<select id="countUser" resultType="int">
+		SELECT COUNT(*) 
+		FROM users 
+	</select>
 	
+	<!-- Paging User -->
+	<select id="ListUser" parameterType="user" resultType="user">
+	SELECT id, UserEmail, UserName, UserLevel, createdAt, updatedAt 
+	FROM users
+	</select>
 	
 </mapper>

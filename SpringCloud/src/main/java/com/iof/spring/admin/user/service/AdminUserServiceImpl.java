@@ -19,6 +19,7 @@ public class AdminUserServiceImpl implements AdminUserService {
 	public void CreateUser(UserVO user) {
 		// TODO Auto-generated method stub
 		System.out.println("Admin User Service Create");
+		System.out.println(""+dao.CountUser());
 		dao.CreateRaw(user);
 		
 	}
@@ -38,6 +39,7 @@ public class AdminUserServiceImpl implements AdminUserService {
 	@Override
 	public List<UserVO> list() {
 		// TODO Auto-generated method stub
+		System.out.println(""+dao.CountUser());
 		return null;
 	}
 

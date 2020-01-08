@@ -21,7 +21,7 @@ public class AdminUserDaoImpl implements AdminUserDao {
 		// TODO Auto-generated method stub
 		System.out.println("Create User Dao");
 		System.out.println("parameter : "+ vo.toString());
-		session.insert("Insert", vo);
+		session.insert("AdminRegisteUser", vo);
 	}
 
 	@Override
@@ -38,7 +38,16 @@ public class AdminUserDaoImpl implements AdminUserDao {
 	public List<UserVO> list() {
 		// TODO Auto-generated method stub
 		System.out.println("User Member List Dao");
-		return session.selectList("listUser");
+		
+		return session.selectList("ListUser");
+	}
+
+	@Override
+	public int CountUser() {
+		// TODO Auto-generated method stub
+		int CountUser = 0;
+		CountUser = session.selectOne("countUser");
+		return CountUser;
 	}
 
 }

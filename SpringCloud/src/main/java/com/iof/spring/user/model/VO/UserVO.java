@@ -7,7 +7,7 @@ public class UserVO {
 	/**
 	 * Index 
 	 */
-	private int Idx;
+	private int id;
 	/**
 	 * User Email
 	 */
@@ -40,11 +40,11 @@ public class UserVO {
 	 */
 	
 	
-	public int getIdx() {
-		return Idx;
+	public int getId() {
+		return id;
 	}
-	public void setIdx(int idx) {
-		Idx = idx;
+	public void setId(int idx) {
+		id = idx;
 	}
 	public String getUserEmail() {
 		return UserEmail;
@@ -85,7 +85,7 @@ public class UserVO {
 	
 	@Override
 	public String toString() {
-		return "UserVO [Idx=" + Idx + ", UserEmail=" + UserEmail + ", UserName=" + UserName + ", UserPassword="
+		return "UserVO [id=" + id + ", UserEmail=" + UserEmail + ", UserName=" + UserName + ", UserPassword="
 				+ UserPassword + ", UserLevel=" + UserLevel + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt
 				+ "]";
 	}
