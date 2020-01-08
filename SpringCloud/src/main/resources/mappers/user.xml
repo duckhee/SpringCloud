@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- 
 CREATE TABLE IF NOT EXISTS `mydb`.`USER` (
   `Idx` INT NOT NULL AUTO_INCREMENT,
@@ -11,19 +14,21 @@ CREATE TABLE IF NOT EXISTS `mydb`.`USER` (
   UNIQUE INDEX `UserEmail_UNIQUE` (`UserEmail` ASC) VISIBLE)
 ENGINE = InnoDB;
 -->
-<mapper namespace="user">
+<mapper namespace="com.iof.spring.admin.Mapper.user">
 	<!-- primary key Idx -->
-	<insert id="CraeteUser" parameterType="user">
+	<insert id="Insert" parameterType="user">
 		INSERT INTO USER (
 			UserEmail,
 			UserName,
 			UserPassword,
+			UserLevel,
 			createdAt,
 			updatedAt
 		) VALUES (
 			#{UserEmail},
 			#{UserName},
 			#{UserPassword},
+			5,
 			#{createdAt},
 			#{updatedAt}
 		);
@@ -32,6 +37,20 @@ ENGINE = InnoDB;
 	<select id='LoginUser' parameterType="user" resultType="user">
 		SELECT * FROM USER WHERE UserEmail=#{UserEmail}
 	</select>
+	<!-- Email Checking Info -->
+	<select id="EmailCheck" parameterType="String" resultType="user">
+		SELECT * FROM USER WEHRE UserEmail=#{UserEmail}
+	</select>
+	<!-- Detail User Info -->
+	<select id='DetailUser' parameterType="user" resultType="user">
+		SELECT * FROM USER WHERE Idx=${Idx}
+	</select>
+	
+	<!-- Member list Info -->
+	<select id="listUser" parameterType="user" resultType="user">
+		SELECT * FROM USER ORDER BY CreatedAt DESC
+	</select>
+	
 	
 	
 </mapper>

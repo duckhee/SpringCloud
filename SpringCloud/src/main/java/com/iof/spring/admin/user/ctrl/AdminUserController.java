@@ -26,18 +26,6 @@ public class AdminUserController {
 			return "redirect:/admin/Users/Login";
 		}
 	
-	
-	/**
-	 * User List Page
-	 * @param model
-	 * @return
-	 */
-	@RequestMapping(value="/list")
-	public String UserList(Model model) {
-		
-		return "";
-	}
-	
 	/**
 	 * Go to Login Page 
 	 * @param model
@@ -45,7 +33,7 @@ public class AdminUserController {
 	 */
 	@RequestMapping(value="/Login", method=RequestMethod.GET)
 	public String UserLogIn(Model model) {
-		return "Admin/User/LogIn";
+		return "Admin/User/LogInPage";
 	}
 	
 	/**
@@ -69,6 +57,47 @@ public class AdminUserController {
 	@RequestMapping(value="/LogOut", method=RequestMethod.POST)
 	public String UserLogOutDo(Model model) {
 		return "";
+	}
+	
+	/**
+	 * User List Page
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value="/list")
+	public String UserList(Model model) {
+		
+		return "Admin/User/ListPage";
+	}
+	
+	/**
+	 * User Profile Page
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value="/Profile", method=RequestMethod.GET)
+	public String UserProfilePage(Model model) {
+		return "Admin/User/ProfilePage";
+	}
+	
+	/**
+	 * User Edit Page 
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value="/EditPage", method=RequestMethod.GET)
+	public String UserEditPage(Model model) {
+		return "Admin/User/EditPage";
+	}
+	
+	/**
+	 * User Edit Logic Do
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value="/EditDo", method=RequestMethod.POST)
+	public String UserEditDo(Model model) {
+		return "redirect:/";
 	}
 	
 }
