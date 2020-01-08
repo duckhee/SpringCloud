@@ -1,13 +1,17 @@
 package com.iof.spring.admin.user.ctrl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.iof.spring.admin.user.service.AdminUserService;
+import com.iof.spring.user.model.VO.UserVO;
 
 @Controller
 @RequestMapping("/admin/Users")
@@ -71,6 +75,9 @@ public class AdminUserController {
 	@RequestMapping(value="/list")
 	public String UserList(Model model) {
 		System.out.println("Admin User List Page");
+		ModelAndView ListModel = new ModelAndView();
+		List<UserVO> list = service.PagingUser(0);
+		ListModel.addObject("UserList", list);
 		return "Admin/User/ListPage";
 	}
 	

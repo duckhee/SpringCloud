@@ -14,6 +14,8 @@ public interface AdminUserService {
 	public boolean DeleteUser(UserVO user);
 	/** Member list */
 	public List<UserVO> list();
+	/** Member Paging */
+	public List<UserVO> PagingUser(int page);
 	/** User Detail */
 	public UserVO Detail(UserVO user);
 

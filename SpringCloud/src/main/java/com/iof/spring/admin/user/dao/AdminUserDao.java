@@ -14,6 +14,8 @@ public interface AdminUserDao {
 	public int CountUser();
 	/** Member list */
 	public List<UserVO> list();
+	/** Member Paging */
+	public List<UserVO> PagingUser(int page);
 	
 
 }

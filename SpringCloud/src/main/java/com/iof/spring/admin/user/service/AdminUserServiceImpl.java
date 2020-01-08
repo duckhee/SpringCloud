@@ -39,7 +39,8 @@ public class AdminUserServiceImpl implements AdminUserService {
 	@Override
 	public List<UserVO> list() {
 		// TODO Auto-generated method stub
-		System.out.println(""+dao.CountUser());
+		System.out.println("Admin User List Service");
+		
 		return null;
 	}
 
@@ -47,5 +48,34 @@ public class AdminUserServiceImpl implements AdminUserService {
 	public UserVO Detail(UserVO user) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<UserVO> PagingUser(int page) {
+		// TODO Auto-generated method stub
+		System.out.println("Admin User List Paging");
+		if(page <= 0) {
+			page = 1;
+		}
+		/** Total User Number */
+		int totalCount = dao.CountUser();
+		/** View Number */
+		int ListNumber = 10;
+		/** total page */
+		int TotalPage;
+		if(totalCount % ListNumber == 0) {			
+			TotalPage = totalCount / ListNumber;
+		}else {
+			TotalPage = totalCount / ListNumber + 1;
+		}
+		if(page > TotalPage) {
+			page = TotalPage;
+		}
+		page = page - 1;
+		System.out.println("Total User Number : " + totalCount+", View Number : "+ListNumber);
+		System.out.println("page : " + page);
+		List<UserVO> UserList = dao.PagingUser(page);
+		System.out.println(""+UserList);
+		return UserList;
 	}
 }

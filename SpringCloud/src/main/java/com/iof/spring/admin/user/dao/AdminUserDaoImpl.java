@@ -38,16 +38,24 @@ public class AdminUserDaoImpl implements AdminUserDao {
 	public List<UserVO> list() {
 		// TODO Auto-generated method stub
 		System.out.println("User Member List Dao");
-		
-		return session.selectList("ListUser");
+		return session.selectList("AdminListUser");
 	}
 
 	@Override
 	public int CountUser() {
 		// TODO Auto-generated method stub
 		int CountUser = 0;
-		CountUser = session.selectOne("countUser");
+		CountUser = session.selectOne("AdminCountUser");
 		return CountUser;
+	}
+
+	@Override
+	public List<UserVO> PagingUser(int page) {
+		// TODO Auto-generated method stub
+		System.out.println("AdminPagingUser");
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("page", page);
+		return session.selectList("AdminPagingUser", map);
 	}
 
 }
