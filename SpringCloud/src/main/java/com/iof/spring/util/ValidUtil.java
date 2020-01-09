@@ -11,5 +11,6 @@ public class ValidUtil {
         Pattern p = Pattern.compile(ePattern);
         Matcher m = p.matcher(email);
         return m.matches();
- }
+	}
+	
 }

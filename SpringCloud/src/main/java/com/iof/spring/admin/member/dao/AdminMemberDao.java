@@ -1,10 +1,15 @@
 package com.iof.spring.admin.member.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.iof.spring.user.model.VO.UserVO;
 
 public interface AdminMemberDao {
+	/** Member Registe */
+	public int RegisteMember(UserVO vo);
+	/** Member find by Email */
+	public UserVO FindByEmailMember(String Email);
 	/** Member Email Check */
 	public int EmailCheck(String Email);
 	/** Count Member Number */

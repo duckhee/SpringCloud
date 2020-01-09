@@ -7,6 +7,9 @@ import com.iof.spring.util.ValidUtil;
 
 public interface AdminMemberService {
 	
+	/** Member Registe */
+	public int RegisteMember(UserVO vo);
+	
 	/** Member Email Check */
 	public boolean EmailCheck(String Email);
 	

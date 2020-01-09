@@ -21,6 +21,23 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 	@Autowired
 	AdminMemberDao dao;
 	
+	/**
+	 * Member Registe Logic
+	 * @param UserVO
+	 * @return UserVO
+	 */
+	@Override
+	public int RegisteMember(UserVO vo) {
+		// TODO Auto-generated method stub
+		System.out.println("Admin Member Registe Service");
+		return dao.RegisteMember(vo);
+	}
+	
+	/**
+	 * Member Email Check Logic
+	 * @param UserEmail
+	 * @return boolean
+	 */
 	@Override
 	public boolean EmailCheck(String Email) {
 		// TODO Auto-generated method stub
@@ -61,7 +78,7 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 			page = TotalPage;
 		}
 		page = page - 1;
-		
+		System.out.println("Page : " + page);
 		List<UserVO> MemberPagingList = dao.PagingMember(page);
 		return MemberPagingList;
 	}

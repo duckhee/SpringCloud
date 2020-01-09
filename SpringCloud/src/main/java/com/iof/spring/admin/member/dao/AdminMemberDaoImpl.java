@@ -16,6 +16,24 @@ public class AdminMemberDaoImpl implements AdminMemberDao {
 	@Autowired
 	private SqlSession session;
 	
+
+	@Override
+	public int RegisteMember(UserVO vo) {
+		// TODO Auto-generated method stub
+		System.out.println("Admin Member Registe Dao");
+		return session.insert("AdminRegisteMember", vo);
+	}
+
+	@Override
+	public UserVO FindByEmailMember(String Email) {
+		// TODO Auto-generated method stub
+		System.out.println("Admin Member Find By Email Dao");
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("Email", Email);
+		return session.selectOne("AdminFindEmailMember", map);
+	}
+
+	
 	/**
 	 * Get Member Email Check
 	 */
@@ -50,6 +68,5 @@ public class AdminMemberDaoImpl implements AdminMemberDao {
 		return session.selectList("AdminPagingMember", PageMap);
 	}
 
-	
 
 }

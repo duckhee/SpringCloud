@@ -26,6 +26,13 @@
 		)
 	</insert>
 	
+	<!-- Member Registe Check -->
+	<select id="AdminFindEmailMember" parameterType="map" resultType="user">
+		SELECT * 
+		FROM users 
+		WHERE UserEmail=#{Email}
+	</select>
+	
 	<!-- Member Email Check -->
 	<select id="AdminEmailCheckMember" parameterType="map" resultType="int">
 		SELECT COUNT(id) 
