@@ -117,7 +117,7 @@
         					<!-- treeview-item -->
         					<ul class="treeview-menu">
         						<li><a href="#MemberRegiste"><i class="fa fa-circle-o"></i>Member Registe</a>
-        						<li><a href="#MemberList"><i class="fa fa-circle-o"></i>Member List</a>
+        						<li><a href="<c:url value='/admin/Users/list'/>"><i class="fa fa-circle-o"></i>Member List</a>
         					</ul>
         					<!-- ./treeview-item -->
         				</li>
@@ -179,8 +179,106 @@
 			<!-- ./left side bar -->
 		<!-- ./left side bar -->
 		<div class="content-wrapper">
+			<!-- content-header -->
+			<div class="content-header">
+				<h1>Member<small> List</small></h1>
+				
+				<ol class="breadcrumb">
+					<li><i class="fa fa-fw fa-users" style="margin-right:5px;"></i>Member</li>
+					<li class="active">list</li>
+				</ol>
+			</div>
+			<!-- ./content-header -->
         		<div class="content">
-                
+        			<div class="row">
+        				<div class="col-md-12 col-xs-12">
+        					<div class="box">
+        						<div class="box-header">
+        							<h3 class="box-title">
+        								<i class="fa fa-fw fa-users" style="margin-right:10px;"></i>
+        								Member List
+        							</h3>
+        							<div class="box-tools">
+        							</div>
+        							<!-- ./box-tools -->
+        						</div>
+        						<!-- ./box-header -->
+        						<div class="box-body">
+        							<table class="table table-bordered">
+        								<thead>
+        									<tr>
+        										<td style="width:10px;">
+        											<input type="checkbox" name="th_checkAll" id="th_checkAll" onclick="">
+        										</td>
+        										<td>
+        											User Email
+        										</td>
+        										<td>
+        											User Name
+        										</td>
+        										<td style="width:15px;">
+        											User Level
+        										</td>
+        										<td>
+        											Registe Date
+        										</td>
+        										<td>
+        											Update Date
+        										</td>
+        									</tr>
+        								</thead>
+        								<!-- ./thead -->
+        								<tbody>
+        									<c:forEach items="${ UserList }" var="UserVO">
+        										<tr>
+        											<td><input type="checkbox" name="checkRow" value="${ UserVO.getId() }"></td>
+        											<td>${ UserVO.getUserEmail() }</td>
+        											<td>${ UserVO.getUserName() }</td>
+        											<td>${ UserVO.getUserLevel() }</td>
+        											<td>${ UserVO.getCreatedAt() }</td>
+        											<td>${ UserVO.getUpdatedAt() }</td>
+        										</tr>
+        									</c:forEach>
+        									<!-- ./list data -->
+        								</tbody>
+        								<!-- ./tbody -->
+        							</table>
+        							<!-- ./table -->
+        						</div>
+        						<!-- ./box-body -->
+        						<div class="box-footer">
+        							<div class="pull-left">
+        								<button id="UserDelete" class="btn btn-danger">
+        									<i class="fa fa-fw fa-trash-o" style="margin-right:10px;"></i>
+        									Delete
+        								</button>
+        							</div>
+        							<div class="pull-right">
+        								<button id="UserEdit" class="btn btn-warning">
+        									<i class="fa fa-fw fa-edit" style="margin-right:10px;"></i>
+        									Edit
+        								</button>
+        								<button id="UserInsert" class="btn btn-primary">
+        									<i class="fa fa-fw fa-pencil" style="margin-right:10px;"></i>
+        									Registe
+        								</button>
+        							</div>
+        							<div class="text-center">
+        								<ul class="pagination pagination-sm no-margin">
+        									<li><a href="<<"> << </a></li>
+        									<li><a href="<<"> >> </a></li>
+        								</ul>
+        								<!-- ./paging -->
+        							</div>
+        							<!-- ./paging-div -->
+        						</div>
+        						<!-- ./box-footer -->
+        					</div>
+        					<!-- ./box -->
+        				</div>
+        				<!-- ./col-md-12 -->
+        			</div>
+        			<!-- ./row -->
             </div>
             <!--/.content-->
         </div>

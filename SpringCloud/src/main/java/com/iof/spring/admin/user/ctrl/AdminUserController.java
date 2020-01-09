@@ -1,13 +1,16 @@
 package com.iof.spring.admin.user.ctrl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iof.spring.admin.user.service.AdminUserService;
@@ -73,12 +76,24 @@ public class AdminUserController {
 	 * @return
 	 */
 	@RequestMapping(value="/list")
-	public String UserList(Model model) {
-		System.out.println("Admin User List Page");
+	public ModelAndView UserList(Model model, HttpServletRequest request) {
+		/** get Page Number parameter */
+		String GetPage = request.getParameter("page");
+		int page = 0;
+		/** Null Check */
+		if(GetPage != null)
+			page = Integer.parseInt(GetPage);
+		System.out.println("Admin User List Page : " + page);
+		/** List View Model */
 		ModelAndView ListModel = new ModelAndView();
-		List<UserVO> list = service.PagingUser(0);
+		/** Get Service */
+		List<UserVO> list = service.PagingUser(page);
+		/** Add Data Model */
 		ListModel.addObject("UserList", list);
-		return "Admin/User/ListPage";
+		ListModel.addObject("CurrentPage", page);
+		/** View Model Set*/
+		ListModel.setViewName("Admin/User/ListPage");
+		return ListModel;
 	}
 	
 	/**

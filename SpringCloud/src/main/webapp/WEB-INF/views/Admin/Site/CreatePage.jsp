@@ -117,7 +117,7 @@
         					<!-- treeview-item -->
         					<ul class="treeview-menu">
         						<li><a href="#MemberRegiste"><i class="fa fa-circle-o"></i>Member Registe</a>
-        						<li><a href="#MemberList"><i class="fa fa-circle-o"></i>Member List</a>
+        						<li><a href="<c:url value='/admin/Users/list'/>"><i class="fa fa-circle-o"></i>Member List</a>
         					</ul>
         					<!-- ./treeview-item -->
         				</li>
