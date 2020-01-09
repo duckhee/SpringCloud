@@ -25,11 +25,6 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 	public boolean EmailCheck(String Email) {
 		// TODO Auto-generated method stub
 		System.out.println("Admin Member Registe Email Check Service");
-		/** Not have Email value */
-		if(Email == null || Email == "") {
-			return false;
-		}
-		
 		/** Get Data */
 		int EmailNumber = dao.EmailCheck(Email);
 		System.out.println("Get Email Number : " + EmailNumber);

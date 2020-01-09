@@ -1,7 +1,9 @@
 package com.iof.spring.admin.member.ctrl;
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -46,15 +48,35 @@ public class AdminMemberController {
 	 */
 	@RequestMapping(value="checkEmail", method=RequestMethod.POST)
 	@ResponseBody
-	public boolean EmailCheck(String Email, ValidUtil valid){
+	public Map<String, Object> EmailCheck(String Email, ValidUtil valid){
 		System.out.println("Admin Member Registe Email Check Controller");
 		System.out.println("Parameter : " + Email);
+		Map<String, Object> EmailMap = new HashMap<String, Object>();
+		boolean flag;
+		/** Not have Email value */
+		if(Email == null || Email == "") {
+			EmailMap.put("flag", false);
+			EmailMap.put("message", "Email is Null");
+			return EmailMap;
+		}
+		
 		/** Check Email type */
 		if(!valid.ValidEmail(Email)) {
 			System.out.println("Not Email Type");
-			return false;
+			EmailMap.put("flag", false);
+			EmailMap.put("message", "Not Email Type");
+			return EmailMap;
 		}
-		return service.EmailCheck(Email);
+		flag = service.EmailCheck(Email);
+		EmailMap.put("flag", flag);
+		if(flag) {
+			System.out.println("Enable Make User");
+			EmailMap.put("message", "Enable");
+		}else {
+			System.out.println("Disable Make User");
+			EmailMap.put("message", "Disable");
+		}
+		return EmailMap;
 	}
 	
 	/**

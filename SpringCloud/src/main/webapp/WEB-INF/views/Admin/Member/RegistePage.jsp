@@ -187,7 +187,7 @@
                 		<!-- ./register-logo -->
                 		<div class="register-box-body">
                 			<p class="login-box-msg">Registe New Member</p>
-                			<form name="create" id="create">
+                			<form name="create" id="create" action="" method="">
                 				<input type="hidden" id="_csrf" name="_csrf" value="">
                 				<!-- ./csrf -->
                 				<div class="form-group has-feedback">
@@ -285,23 +285,28 @@
     }
 	/** Function Email Nesting Check */
 	function NestingEmailCheck(){
-		let CheckEmail = $("#UserEmail").val();
-		$.ajax({
-			url:'',
-			type:'',
-			dataType:'',
-			contentType:'application/json',
-			data:JSON.stringify({
-				UserEmail:''
-			}),
-			success:function(data){
-				
-			},
-			error:function(request, status, error){
-				console.log("EMAIL NESTING CHECK ERROR");
-				return false;
-			}
-		})
+		console.log("Email Check Btn");
+		$("#EmailCheckBtn").click(function(){
+			console.log("Email Check Btn");
+			let CheckEmail = $("#UserEmail").val();
+			console.log("Input Value : ", CheckEmail)
+			$.ajax({
+				url:"<c:url value='/admin/Members/checkEmail'/>",
+				type:'POST',
+				dataType:'json',
+				contentType:'application/json',
+				data:JSON.stringify({
+					Email:"admin@co.kr"
+				}),
+				success:function(data){
+					console.log("data : ", data);
+				},
+				error:function(request, status, error){
+					console.log("EMAIL NESTING CHECK ERROR");
+					return false;
+				}
+			});
+		});
 	}
 	/** Function Email Null Check */
 	function EmailCheck(){
@@ -428,7 +433,7 @@
 			if(flag == true){
 				console.log("Create Do");
 				document.create.method="post";
-				document.cretae.action = "";
+				//document.cretae.action = "";
 			}
 			
 			
@@ -437,6 +442,7 @@
 	};
 	/** Script */
 	$(function(){
+		NestingEmailCheck();
 		RegisteDo();
 	});
 	</script>
