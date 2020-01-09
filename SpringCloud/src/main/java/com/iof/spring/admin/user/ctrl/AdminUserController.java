@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -52,9 +53,11 @@ public class AdminUserController {
 	 * @return
 	 */
 	@RequestMapping(value="/Login", method=RequestMethod.POST)
-	public String UserLogInDo(Model model) {
-		System.out.println("Admin User Login Do");
-		return "";
+	public String UserLogInDo(UserVO user) {
+		System.out.println("Admin User Login Do : "+user);
+		/** Login Info Save Session */
+		HttpSession session;
+		return "redirect:/admin";
 		
 	}
 	
@@ -67,7 +70,7 @@ public class AdminUserController {
 	@RequestMapping(value="/LogOut", method=RequestMethod.POST)
 	public String UserLogOutDo(Model model) {
 		System.out.println("Admin User LogOut");
-		return "";
+		return "redirect:/admin";
 	}
 	
 	/**

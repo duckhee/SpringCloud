@@ -78,6 +78,19 @@
 	<script src="<c:url value='/resources/Admin/plugins/iCheck/icheck.min.js'/>"></script>
 	<!-- sweetalert2 -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js"></script>
-	
+	<!-- Login Submit -->
+	<script>
+		/** Email Check Function */
+		function EmailCheck(){
+		
+		}
+		/** Password Check Function */
+		function PasswordCheck(){
+			
+		}
+		$(function(){
+			
+		});
+	</script>
 </body>
 </html>

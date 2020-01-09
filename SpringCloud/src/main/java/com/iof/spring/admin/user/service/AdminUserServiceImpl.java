@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.iof.spring.admin.user.dao.AdminUserDao;
@@ -14,14 +16,20 @@ public class AdminUserServiceImpl implements AdminUserService {
 	
 	@Resource(name="AdminUserDao")
 	private AdminUserDao dao;
+	
+	/** Password Security */
+	@Autowired
+	BCryptPasswordEncoder passwordEncoder;
+	//BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
 	@Override
 	public void CreateUser(UserVO user) {
 		// TODO Auto-generated method stub
 		System.out.println("Admin User Service Create");
 		System.out.println(""+dao.CountUser());
+		String password = passwordEncoder.encode(user.getUserPassword());
+		user.setUserPassword(password);
 		dao.CreateRaw(user);
-		
 	}
 
 	@Override
