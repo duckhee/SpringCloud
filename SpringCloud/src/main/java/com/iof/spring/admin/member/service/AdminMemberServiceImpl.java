@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.iof.spring.admin.member.dao.AdminMemberDao;
 import com.iof.spring.user.model.VO.UserVO;
+import com.iof.spring.util.ValidUtil;
+
 
 /**
  * Admin Member ServiceImpl
@@ -28,7 +30,10 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 			return false;
 		}
 		/** Check Email type */
-		
+		if(!ValidUtil.ValidEmail(Email)) {
+			System.out.println("Not Email Type");
+			return false;
+		}
 		/** Get Data */
 		int EmailNumber = dao.EmailCheck(Email);
 		System.out.println("Get Email Number : "+EmailNumber);

@@ -13,6 +13,16 @@ public class SiteVO {
 	private String Owner;
 	private Date createdAt;
 	private Date updatedAt;
+	
+	public SiteVO(int id, String name, String owner, Date createdAt, Date updatedAt) {
+		super();
+		this.id = id;
+		this.name = name;
+		Owner = owner;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+	}
+	
 	public int getId() {
 		return id;
 	}

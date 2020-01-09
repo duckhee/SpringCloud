@@ -34,6 +34,19 @@ public class UserVO {
 	 */
 	private Date updatedAt;
 	
+	
+	
+	public UserVO(int id, String userEmail, String userName, String userPassword, int userLevel, Date createdAt,
+			Date updatedAt) {
+		super();
+		this.id = id;
+		UserEmail = userEmail;
+		UserName = userName;
+		UserPassword = userPassword;
+		UserLevel = userLevel;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+	}
 	/**
 	 * Getter Setter 
 	 * @return
