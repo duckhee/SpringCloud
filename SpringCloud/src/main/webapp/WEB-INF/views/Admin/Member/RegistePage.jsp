@@ -275,4 +275,169 @@
 	<!-- AdminLTE for demo purposes -->
 	<script src="<c:url value='/resources/Admin/dist/js/demo.js'/>"></script>
 	<script src="<c:url value='/resources/Admin/dist/js/app.min.js'/>"></script>
+	<script>
+	/** Email regExp */
+	var regEmailExp = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+	/** Email checking */
+    function validateEmail(email) {
+        var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+        return re.test(email);
+    }
+	/** Function Email Nesting Check */
+	function NestingEmailCheck(){
+		let CheckEmail = $("#UserEmail").val();
+		$.ajax({
+			url:'',
+			type:'',
+			dataType:'',
+			contentType:'application/json',
+			data:JSON.stringify({
+				UserEmail:''
+			}),
+			success:function(data){
+				
+			},
+			error:function(request, status, error){
+				console.log("EMAIL NESTING CHECK ERROR");
+				return false;
+			}
+		})
+	}
+	/** Function Email Null Check */
+	function EmailCheck(){
+		let Email = $("#UserEmail").val();
+		console.log("Email : ", Email);
+		if(Email.indexOf(' ') !== -1){
+			Swal.fire({
+				type:'warning',
+				title:'Not Input Space in Email'
+			});
+			return null;
+		}
+		if(!regEmailExp.test(Email)){
+			Swal.fire({
+				type:'warning',
+				title:"Not Email Format"
+			});
+			return null;
+		}
+		if(!Email){
+			Swal.fire({
+				type:'warning',
+				title:"Not Empty"
+			});
+			return null;
+		}
+		/** Return Success */
+		return true;
+	};
+	
+	/** Function Password Check */
+	function PasswordCheck(){
+		let pass = $("#UserPassword").val();
+		let ConfirmPass = $("#UserConfirmPassword").val();
+		console.log("Password : "+pass + ", Confirm : "+ConfirmPass);
+		if(!pass){
+			Swal.fire({
+				type:'warning',
+				title:'Input Password'
+			});
+			return null;	
+		}
+		
+		if(!ConfirmPass){
+			Swal.fire({
+				type:'warning',
+				title:'Input Confirm Password'
+			});
+			return null;
+		}
+		
+		if(pass.indexOf(" ") !== -1){
+			Swal.fire({
+				type:'warning',
+				title:'Not Input Space in Password'
+			});
+			return null;
+		}
+		
+		if(ConfirmPass.indexOf(" ") !== -1){
+			Swal.fire({
+				type:'warning',
+				title:"Not INput Space in Confirm Password"
+			});
+			return null;
+		}
+		
+		if(pass !== ConfirmPass){
+			Swal.fire({
+				type:'warning',
+				title:'Not Match password and confirm password'
+			});
+			return null;
+		}
+		return false;
+	};
+	
+	/** Function Name Check */
+	function NameCheck(){
+		let Name = $("#UserName").val();	
+		console.log("Name : ", Name);
+		if(!Name){
+			Swal.fire({
+				type:'warning',
+				title:'Input Name'
+			});
+			return null;
+		}
+		if(Name.indexOf(" ") !== -1){
+			Swal.fire({
+				type:'warning',
+				title:"Not Input Space in User Name"
+			});
+			return null;
+		}
+		return true;
+	};
+	
+	/** Create */
+	function RegisteDo(){
+		$("#RegisteBtn").click(function(){
+			let flag = false;
+			if(EmailCheck()){
+				console.log("Email Check Success");
+				flag = true;
+			}else{
+				flag = false;
+			}
+			
+			if(PasswordCheck()){
+				console.log("Password Check Success");
+				flag = true;
+			}else{
+				flag = false;
+			}
+			
+			if(NameCheck()){
+				console.log("Name Check Success");
+				flag = true;
+			}else{
+				flag = false;
+			}
+			
+			if(flag == true){
+				console.log("Create Do");
+				document.create.method="post";
+				document.cretae.action = "";
+			}
+			
+			
+			
+		});
+	};
+	/** Script */
+	$(function(){
+		RegisteDo();
+	});
+	</script>
 </html>

@@ -15,7 +15,32 @@ public class AdminMemberDaoImpl implements AdminMemberDao {
 	
 	@Autowired
 	private SqlSession session;
-
+	
+	/**
+	 * Get Member Email Check
+	 */
+	@Override
+	public int EmailCheck(String Email) {
+		// TODO Auto-generated method stub
+		System.out.println("Admin Member Emaili Check Dao");
+		Map<String, Object> EmailMap = new HashMap<String, Object>();
+		EmailMap.put("email", Email);
+		return session.selectOne("AdminEmailCheckMember", EmailMap);
+	}
+	
+	/**
+	 * Get Member Number
+	 */
+	@Override
+	public int CountMember() {
+		// TODO Auto-generated method stub
+		System.out.println("Admin Member Count Dao");
+		return session.selectOne("AdminCountMember");
+	}
+	
+	/**
+	 * Get Member Paging
+	 */
 	@Override
 	public List<UserVO> PagingMember(int page) {
 		// TODO Auto-generated method stub
@@ -25,11 +50,6 @@ public class AdminMemberDaoImpl implements AdminMemberDao {
 		return session.selectList("AdminPagingMember", PageMap);
 	}
 
-	@Override
-	public int CountMember() {
-		// TODO Auto-generated method stub
-		System.out.println("Admin Member Count Dao");
-		return session.selectOne("AdminCountMember");
-	}
+	
 
 }

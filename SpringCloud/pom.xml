@@ -206,7 +206,12 @@
 		<!-- https://mvnrepository.com/artifact/com.oracle/ojdbc6 -->
 		<!-- <dependency> <groupId>com.oracle</groupId> <artifactId>ojdbc6</artifactId> 
 			<version>11.2.0.4.0-atlassian-hosted</version> </dependency> -->
-
+		<!-- validator -->
+		<dependency>
+    			<groupId>commons-validator</groupId>
+    			<artifactId>commons-validator</artifactId>
+    			<version>1.4.1</version>
+		</dependency>
 		<!-- json 추가 -->
 		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
 		<dependency>

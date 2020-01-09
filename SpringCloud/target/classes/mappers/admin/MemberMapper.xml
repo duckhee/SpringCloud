@@ -25,6 +25,14 @@
 			#{updatedAt} 
 		)
 	</insert>
+	
+	<!-- Member Email Check -->
+	<select id="AdminEmailCheckMember" parameterType="map" resultType="int">
+		SELECT COUNT(id) 
+		FROM users 
+		WHERE UserEmail=#{email}
+	</select>
+	
 	<!-- Count Member -->
 	<select id="AdminCountMember" resultType="int">
 		SELECT COUNT(id) 

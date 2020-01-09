@@ -19,6 +19,26 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 	@Autowired
 	AdminMemberDao dao;
 	
+	@Override
+	public boolean EmailCheck(String Email) {
+		// TODO Auto-generated method stub
+		System.out.println("Admin Member Registe Email Check Service");
+		/** Not have Email value */
+		if(Email == null || Email == "") {
+			return false;
+		}
+		/** Check Email type */
+		
+		/** Get Data */
+		int EmailNumber = dao.EmailCheck(Email);
+		System.out.println("Get Email Number : "+EmailNumber);
+		if(EmailNumber <= 0) {
+			return false;
+		}else {
+			return true;
+		}
+	}
+	
 	/**
 	 * Member List Service Logic
 	 * @param page Number
@@ -49,5 +69,6 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 		List<UserVO> MemberPagingList = dao.PagingMember(page);
 		return MemberPagingList;
 	}
+
 
 }

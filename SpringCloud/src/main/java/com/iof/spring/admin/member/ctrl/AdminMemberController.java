@@ -1,13 +1,16 @@
 package com.iof.spring.admin.member.ctrl;
 
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iof.spring.admin.member.service.AdminMemberService;
@@ -35,6 +38,22 @@ public class AdminMemberController {
 		return "Admin/Member/RegistePage";
 	}
 	
+	/**
+	 * Member having Check
+	 * @return
+	 */
+	@RequestMapping(value="checkEmail", method=RequestMethod.POST)
+	@ResponseBody
+	public boolean EmailCheck(String Email){
+		System.out.println("Admin Member Registe Email Check Controller");
+		System.out.println("Parameter : " + Email);
+		return service.EmailCheck(Email);
+	}
+	
+	/**
+	 * Member Registe Do Logic Controller
+	 * @return
+	 */
 	@RequestMapping(value="/Registe", method=RequestMethod.POST)
 	public String RegisteMemberDo() {
 		System.out.println("Admin Member Registe Do");
