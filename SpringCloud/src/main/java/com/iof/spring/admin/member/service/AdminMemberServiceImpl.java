@@ -29,18 +29,14 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 		if(Email == null || Email == "") {
 			return false;
 		}
-		/** Check Email type */
-		if(!ValidUtil.ValidEmail(Email)) {
-			System.out.println("Not Email Type");
-			return false;
-		}
+		
 		/** Get Data */
 		int EmailNumber = dao.EmailCheck(Email);
-		System.out.println("Get Email Number : "+EmailNumber);
+		System.out.println("Get Email Number : " + EmailNumber);
 		if(EmailNumber <= 0) {
-			return false;
-		}else {
 			return true;
+		}else {
+			return false;
 		}
 	}
 	

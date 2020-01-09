@@ -15,6 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.iof.spring.admin.member.service.AdminMemberService;
 import com.iof.spring.user.model.VO.UserVO;
+import com.iof.spring.util.PageMaker;
+import com.iof.spring.util.ValidUtil;
 
 /**
  * Admin Member Management
@@ -44,9 +46,14 @@ public class AdminMemberController {
 	 */
 	@RequestMapping(value="checkEmail", method=RequestMethod.POST)
 	@ResponseBody
-	public boolean EmailCheck(String Email){
+	public boolean EmailCheck(String Email, ValidUtil valid){
 		System.out.println("Admin Member Registe Email Check Controller");
 		System.out.println("Parameter : " + Email);
+		/** Check Email type */
+		if(!valid.ValidEmail(Email)) {
+			System.out.println("Not Email Type");
+			return false;
+		}
 		return service.EmailCheck(Email);
 	}
 	
