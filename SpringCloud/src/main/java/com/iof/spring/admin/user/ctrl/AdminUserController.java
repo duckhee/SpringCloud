@@ -94,24 +94,17 @@ public class AdminUserController {
 	 * @return
 	 */
 	@RequestMapping(value="/list")
-	public ModelAndView UserList(Model model, HttpServletRequest request) {
+	public String UserList(Model model, HttpServletRequest request) {
+		System.out.println("Admin User List Control Redirect Member List");
 		/** get Page Number parameter */
 		String GetPage = request.getParameter("page");
-		int page = 0;
-		/** Null Check */
-		if(GetPage != null)
-			page = Integer.parseInt(GetPage);
-		System.out.println("Admin User List Page : " + page);
-		/** List View Model */
-		ModelAndView ListModel = new ModelAndView();
-		/** Get Service */
-		List<UserVO> list = service.PagingUser(page);
-		/** Add Data Model */
-		ListModel.addObject("UserList", list);
-		ListModel.addObject("CurrentPage", page);
-		/** View Model Set*/
-		ListModel.setViewName("Admin/User/ListPage");
-		return ListModel;
+		if(GetPage != null) {
+			/** redirect Get page Number */
+			return "redirect:/admin/Members/list?page="+GetPage;
+		}else {
+			/** redirect Main List Page */
+			return "redirect:/admin/Members/list";
+		}
 	}
 	
 	/**

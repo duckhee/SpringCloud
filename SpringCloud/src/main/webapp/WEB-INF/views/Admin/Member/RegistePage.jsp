@@ -116,7 +116,7 @@
         					</a>
         					<!-- treeview-item -->
         					<ul class="treeview-menu">
-        						<li><a href="#MemberRegiste"><i class="fa fa-circle-o"></i>Member Registe</a>
+        						<li><a href="<c:url value='/admin/Members/Registe'/>"><i class="fa fa-circle-o"></i>Member Registe</a>
         						<li><a href="<c:url value='/admin/Users/list'/>"><i class="fa fa-circle-o"></i>Member List</a>
         					</ul>
         					<!-- ./treeview-item -->
@@ -180,7 +180,53 @@
 		<!-- ./left side bar -->
 		<div class="content-wrapper">
         		<div class="content">
-                
+                <div class='register-box'>
+                		<div class="register-logo">
+                			<a href="#"><b>Member </b>Registe</a>
+                		</div>
+                		<!-- ./register-logo -->
+                		<div class="register-box-body">
+                			<p class="login-box-msg">Registe New Member</p>
+                			<form name="create" id="create">
+                				<input type="hidden" id="_csrf" name="_csrf" value="">
+                				<!-- ./csrf -->
+                				<div class="form-group has-feedback">
+                					<div class="input-group">
+                						<input type="email" id="UserEmail" name="UserEmail" class="form-control" placeholder=" User Email" autocomplete="off">
+                						<span class="input-group-btn">
+                							<input id="EmailCheckFlag" type="hidden" value="">
+                							<button type='button' id="EmailCheckBtn" name="EmailCheckBtn" class='btn btn-info btn-flat'>Email Check</button>
+                						</span>
+                						<!-- ./email-check button -->
+                					</div>
+                				</div>
+                				<!-- ./form-group -->
+                				<div class="form-group has-feedback">
+                					<input type="password" id="UserPassword" name="UserPassword" class="form-control" placeholder="Password">
+                					<span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                				</div>
+                				<!-- ./form-group -->
+                				<div class="form-group has-feedback">
+                					<input type="password" id="UserConfirmPassword" name="UserConfirmPassword" class="form-control" placeholder="Confirm Password">
+                					<span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                				</div>
+                				<!-- ./form-group -->
+                				<div class="form-group has-feedback">
+                					<input type="text" id="UserName" name="UserName" class="form-control" placeholder="User Name" autocomplete="off">
+                					<span class="glyphicon glyphicon-user form-control-feedback"></span>
+                				</div>
+                				<!-- ./form-group -->
+                			</form>
+                			<!-- ./Member Info -->
+                		</div>
+                		<!-- ./register-box-body -->
+                		<div class="box-footer">
+                			<button type="button" class="btn btn-danger">Cancel</button>
+                			<button type="button" id="RegisteBtn" class="btn btn-primary pull-right">Registe</button>
+                		</div>
+                		<!-- ./register-box-footer -->
+                </div>
+                <!-- ./register-box -->
             </div>
             <!--/.content-->
         </div>

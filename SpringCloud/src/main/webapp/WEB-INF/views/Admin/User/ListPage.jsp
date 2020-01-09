@@ -216,7 +216,7 @@
         										<td>
         											User Name
         										</td>
-        										<td style="width:15px;">
+        										<td>
         											User Level
         										</td>
         										<td>

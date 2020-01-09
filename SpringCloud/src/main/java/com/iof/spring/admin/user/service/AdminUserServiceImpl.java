@@ -61,7 +61,7 @@ public class AdminUserServiceImpl implements AdminUserService {
 	@Override
 	public List<UserVO> PagingUser(int page) {
 		// TODO Auto-generated method stub
-		System.out.println("Admin User List Paging");
+		System.out.println("Admin User List Paging Service");
 		if(page <= 0) {
 			page = 1;
 		}

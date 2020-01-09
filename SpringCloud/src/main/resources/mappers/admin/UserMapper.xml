@@ -39,7 +39,7 @@ ENGINE = InnoDB;
 	
 	<!-- Count User -->
 	<select id="AdminCountUser" resultType="int">
-		SELECT COUNT(*) 
+		SELECT COUNT(id) 
 		FROM users 
 	</select>
 	

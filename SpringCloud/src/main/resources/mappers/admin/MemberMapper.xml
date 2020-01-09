@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.iof.spring.admin.Mapper.member">
+	<!-- Insert Member -->
+	<insert id="AdminRegisteMember" parameterType="user">
+		INSERT INTO users (
+			id, 
+			UserEmail, 
+			UserName, 
+			UserPassword, 
+			UserLevel, 
+			createdAt, 
+			updatedAt
+		) 
+		VALUES (
+			#{id}, 
+			#{UserEmail}, 
+			#{UserName}, 
+			#{UserPassword}, 
+			#{UserLevel}, 
+			#{createdAt}, 
+			#{updatedAt} 
+		)
+	</insert>
+	<!-- Count Member -->
+	<select id="AdminCountMember" resultType="int">
+		SELECT COUNT(id) 
+		FROM users 
+	</select>
+	
+	<!-- Paging Member -->
+	<select id="AdminPagingMember" parameterType="map" resultType="user">
+		SELECT id, UserEmail, UserName, UserLevel, createdAt, updatedAt 
+		FROM users 
+		ORDER BY id DESC 
+		LIMIT 10 OFFSET #{page}
+	</select>
+	
+	<!-- search Query -->
+	<sql id="search">
+		WHERE UserEmail LIKE CONCAT('%', #{keyword}, '%') 
+		OR UserName LIKE CONCAT('%', #{keyword}, '%') 
+		OR UserLevel LIKE CONCAT('%', #{keyword}, '%')
+	</sql>
+
+
+</mapper>
