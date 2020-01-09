@@ -1,6 +1,6 @@
 package com.iof.spring.admin.user.ctrl;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -11,12 +11,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iof.spring.admin.user.service.AdminUserService;
 import com.iof.spring.user.model.VO.UserVO;
 
+/**
+ * Admin User Management
+ * @author duckheewon
+ *
+ */
 @Controller
 @RequestMapping("/admin/Users")
 public class AdminUserController {
@@ -30,10 +35,20 @@ public class AdminUserController {
 	 * @return
 	 */
 	@RequestMapping(value="/")
-		public String UserMain() {
-			System.out.println("Admin User Main");
-			return "redirect:/admin/Users/Login";
-		}
+	public String UserMain() {
+		System.out.println("Admin User Main");
+		return "redirect:/admin/Users/Login";
+	}
+	
+	/**
+	 * Go to Registe User Page
+	 * @return
+	 */
+	@RequestMapping(value="/Registe", method=RequestMethod.GET)
+	public String UserRegistePage() {
+		System.out.println("Admin User Registe Page");
+		return "Admin/User/RegistePage";
+	}
 	
 	/**
 	 * Go to Login Page 

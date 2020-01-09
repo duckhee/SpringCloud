@@ -9,6 +9,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.iof.spring.admin.site.service.AdminSiteService;
 
+/**
+ * Admin Site Management
+ * @author duckheewon
+ *
+ */
 @Controller
 @RequestMapping("/admin/Sites")
 public class SiteController {
