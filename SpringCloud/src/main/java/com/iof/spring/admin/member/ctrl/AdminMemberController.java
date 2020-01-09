@@ -90,12 +90,14 @@ public class AdminMemberController {
 	@RequestMapping(value="/Registe", method=RequestMethod.POST)
 	public String RegisteMemberDo(HttpServletRequest req) {
 		System.out.println("Admin Member Registe Do");
-		UserVO newUser =  new UserVO();
+		/** Get Parameter */
 		String UserEmail = req.getParameter("UserEmail");
-		newUser.setUserEmail(UserEmail);
 		String UserName = req.getParameter("UserName");
-		newUser.setUserName(UserName);
 		String UserPassword = req.getParameter("UserPassword");
+		/** Make UserVO */
+		UserVO newUser =  new UserVO();
+		newUser.setUserEmail(UserEmail);
+		newUser.setUserName(UserName);
 		newUser.setUserPassword(UserPassword);
 		/** User Create Time */
 		Date _CreateTime = new Date();
