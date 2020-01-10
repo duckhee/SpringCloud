@@ -16,6 +16,8 @@ public interface AdminUserService {
 	public List<UserVO> list();
 	/** Member Paging */
 	public List<UserVO> PagingUser(int page);
+	/** User Login */
+	public UserVO LoginUser(UserVO user);
 	/** User Detail */
 	public UserVO Detail(UserVO user);
 

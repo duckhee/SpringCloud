@@ -69,10 +69,19 @@ public class AdminUserController {
 	 */
 	@RequestMapping(value="/Login", method=RequestMethod.POST)
 	public String UserLogInDo(UserVO user) {
-		System.out.println("Admin User Login Do : "+user);
+		System.out.println("Admin User Login Do : " + user);
+		/** Login Service */
+		UserVO _login = service.LoginUser(user);
+		System.out.println("Login Service Value : " + _login);
 		/** Login Info Save Session */
 		HttpSession session;
-		return "redirect:/admin";
+		
+		/** Login After Do */
+		if(_login == null) {
+			return "redirect:/admin/Users/Login";
+		}else {
+			return "redirect:/admin";
+		}
 		
 	}
 	
@@ -89,6 +98,7 @@ public class AdminUserController {
 	}
 	
 	/**
+	 * TODO delete this method
 	 * User List Page
 	 * @param model
 	 * @return

@@ -307,7 +307,11 @@
 						});
 					}else{
 						console.log("Success");
-						return $("#EmailCheckFlag").val(data.flag);
+						$("#EmailCheckFlag").val(data.flag);
+						return Swal.fire({
+							type:'success',
+							title:data.message
+						});
 					}
 				},
 				error:function(request, status, error){
@@ -425,32 +429,37 @@
 	/** Create */
 	function RegisteDo(){
 		$("#RegisteBtn").click(function(){
-			let flag = false;
+			let Email = $("#UserEmail").val();
+			let EmailFlag = false;
+			let PassFlag = false;
+			let NameFlag = false;
 			if(EmailCheck()){
 				console.log("Email Check Success");
-				flag = true;
+				EmailFlag = true;
 			}else{
 				flag = false;
 			}
 			
 			if(PasswordCheck()){
 				console.log("Password Check Success");
-				flag = true;
+				PassFlag = true;
 			}else{
 				flag = false;
 			}
 			
 			if(NameCheck()){
 				console.log("Name Check Success");
-				flag = true;
+				NameFlag = true;
 			}else{
 				flag = false;
 			}
 			
-			if(flag == true){
+			if(EmailFlag == true && PassFlag == true && NameFlag == true){
+				/** Submit Do */
 				console.log("Create Do");
 				document.create.method="post";
 				document.create.action = "<c:url value='/admin/Members/Registe'/>";
+				document.create.submit();
 			}
 			
 			

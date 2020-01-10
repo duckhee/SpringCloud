@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -101,8 +102,6 @@ public class AdminMemberController {
 		newUser.setUserPassword(UserPassword);
 		/** User Create Time */
 		Date _CreateTime = new Date();
-//		SimpleDateFormat TransFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//		String CreateTime = TransFormat.format(_CreateTime);
 		/** Set User Create Time And Update Time */
 		newUser.setCreatedAt(_CreateTime);
 		newUser.setUpdatedAt(_CreateTime);
@@ -150,4 +149,43 @@ public class AdminMemberController {
 		MemberListView.setViewName("Admin/Member/ListPage");
 		return MemberListView;
 	}
+	
+	/**
+	 * Member Detail page
+	 * @param request 
+	 * @return ModelAndView
+	 */
+	@RequestMapping(value="/detail", method=RequestMethod.GET)
+	public ModelAndView AdminMemberDetailPage(HttpServletRequest request) {
+		String _UserEmail = request.getParameter("Email");
+		System.out.println("Admin Member Detail page");
+		ModelAndView MemberDetailView = new ModelAndView();
+		MemberDetailView.setViewName("Admin/Member/DetailPage");
+		return MemberDetailView;
+	}
+	
+	/**
+	 * Member Edit Page
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value="/edit", method=RequestMethod.GET)
+	public ModelAndView AdminMemberEditPage() {
+		System.out.println("Admin Member Edit Page");
+		ModelAndView EditView = new ModelAndView();
+		EditView.setViewName("Admin/Member/EditPage");
+		return EditView;
+	}
+	
+	/**
+	 * Member Edit Do
+	 * @param model
+	 * @return redirect Detail Page
+	 */
+	@RequestMapping(value="/edit", method=RequestMethod.POST)
+	public String AdminMemberEditDo(Model model) {
+		
+		return "redirect:/admin/Members/detail";
+	}
+	
 }

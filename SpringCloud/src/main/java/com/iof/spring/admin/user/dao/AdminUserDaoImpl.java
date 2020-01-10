@@ -35,10 +35,10 @@ public class AdminUserDaoImpl implements AdminUserDao {
 	}
 
 	@Override
-	public List<UserVO> list() {
+	public UserVO LoginUser(UserVO vo) {
 		// TODO Auto-generated method stub
-		System.out.println("User Member List Dao");
-		return session.selectList("AdminListUser");
+		System.out.println("Admin User Login Dao");
+		return session.selectOne("AdminLoginUser", vo);
 	}
 
 	@Override
@@ -48,6 +48,14 @@ public class AdminUserDaoImpl implements AdminUserDao {
 		CountUser = session.selectOne("AdminCountUser");
 		return CountUser;
 	}
+	
+	@Override
+	public List<UserVO> list() {
+		// TODO Auto-generated method stub
+		System.out.println("User Member List Dao");
+		return session.selectList("AdminListUser");
+	}
+
 
 	@Override
 	public List<UserVO> PagingUser(int page) {
@@ -57,5 +65,6 @@ public class AdminUserDaoImpl implements AdminUserDao {
 		map.put("page", page);
 		return session.selectList("AdminPagingUser", map);
 	}
+
 
 }

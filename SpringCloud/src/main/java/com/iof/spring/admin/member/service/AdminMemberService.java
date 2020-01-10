@@ -16,5 +16,13 @@ public interface AdminMemberService {
 	/** Member List */
 	public List<UserVO> PagingMember(int page);
 	
+	/** Member Detail */
+	
+	
+	/** Member Update */
+	public UserVO UpdateMember(UserVO user);	
+	
+	/** Member Delete */
+	public int DeleteMember(UserVO user);
 
 }

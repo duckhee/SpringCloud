@@ -86,4 +86,20 @@ public class AdminUserServiceImpl implements AdminUserService {
 		System.out.println(""+UserList);
 		return UserList;
 	}
+
+	@Override
+	public UserVO LoginUser(UserVO user) {
+		// TODO Auto-generated method stub
+		System.out.println("Admin User Login Service");
+		System.out.println("Login User Input Value : " + user);
+		UserVO _Login = dao.LoginUser(user);
+		String _password = _Login.getUserPassword();
+		boolean Flag = passwordEncoder.matches(user.getUserPassword(), _password);
+		if(Flag == true) {
+			return _Login;
+		}else {
+			return null;
+		}
+	}
+	
 }

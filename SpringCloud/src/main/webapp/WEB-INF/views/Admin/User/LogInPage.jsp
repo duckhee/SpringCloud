@@ -34,16 +34,16 @@
 		<div class='login-box-body'>
 			<p class="login-box-msg">Sign In to Start your Session</p>
 			
-			<form id="LogIn" name="LogIn">
+			<form id="LogIn" name="LogIn" method="" action="">
 				<!-- csrf Tocken -->
 				<input type="hidden" name="_csrf"value="">
 				<div class="form-group has-feedback">
-					<input type="email" class="form-control" placeholder="Input Email ...">
+					<input name="UserEmail" id="UserEmail" type="email" class="form-control" placeholder="Input Email ...">
 					<i class="glyphicon glyphicon-envelope form-control-feedback"></i>
 				</div>
 				<!-- ./form-group Email -->
 				<div class="form-group has-feedback">
-					<input type="password" class="form-control" placeholder="Input Your password ...">
+					<input name="UserPassword" id="UserPassword" type="password" class="form-control" placeholder="Input Your password ...">
 					<i class="glyphicon glyphicon-lock form-control-feedback"></i>
 				</div>
 				<!-- ./form-group Password -->
@@ -59,7 +59,7 @@
 					<!-- ./col-xs-8 -->
 					
 					<div class="col-xs-4">
-						<button type="button" class="btn btn-primary btn-block btn-flat" id="LoginDo">Sign In</button>
+						<button type="button" class="btn btn-primary btn-block btn-flat" id="LoginBtn">Sign In</button>
 					</div>
 					<!-- ./col-xs-4 -->
 				</div>
@@ -72,7 +72,7 @@
 	</div>
 	<!-- ./login-box -->
 	<!-- jquery javascript -->
-	<script src="<c:url value='/resources/Admin/plugins/jQeury/jquery-2.2.3.min.js'/>"></script>
+	<script src="<c:url value='/resources/Admin/plugins/jQuery/jquery-2.2.3.min.js'/>"></script>
 	<!-- bootstrap javascript -->
 	<script src="<c:url value='/resources/Admin/bootstrap/js/bootstrap.min.js'/>"></script>
 	<script src="<c:url value='/resources/Admin/plugins/iCheck/icheck.min.js'/>"></script>
@@ -80,16 +80,78 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js"></script>
 	<!-- Login Submit -->
 	<script>
+		/** Email regExp */
+		var regEmailExp = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+		/** Email checking */
+    		function validateEmail(email) {
+        		var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+        		return re.test(email);
+    		}
 		/** Email Check Function */
 		function EmailCheck(){
-		
+			let Email = $("#UserEmail").val();
+			console.log("User Email : ", Email);
+			
+			if(!regEmailExp.test(Email)){
+				Swal.fire({
+					type:'warning',
+					title:"Not Email Format"
+				});
+				
+				return null;
+			}
+
+			if(!Email){
+				Swal.fire({
+					type:'warning',
+					title:'User Email Not Empty'
+				});
+				
+				return null;
+			}
+			
+			return true;
 		}
 		/** Password Check Function */
 		function PasswordCheck(){
-			
+			let Password = $("#UserPassword").val();
+			console.log("User Password : ", Password);
+			if(!Password){
+				Swal.fire({
+					type:'warning',
+					title:'Password Not Empty'
+				});
+				return null;
+			}
+			return true;
+		}
+		/** Login Do Function */
+		function LoginDo(){
+			$("#LoginBtn").click(function(){
+				let Email = $("#UserEmail").val();
+				let EmailFlag = false;
+				let PassFlag = false;
+				if(EmailCheck()){
+					EmailFlag = true;
+				}else{
+					EmailFlag = false;
+				}
+				
+				if(PasswordCheck()){
+					PassFlag = true;
+				}else{
+					PassFlag = false;
+				}
+				if(EmailFlag == true && PassFlag == true){
+					console.log('Success');
+					document.LogIn.method="POST";
+					document.LogIn.action="<c:url value='/admin/Users/Login'/>";
+					document.LogIn.submit(); 
+				}
+			});
 		}
 		$(function(){
-			
+			LoginDo();
 		});
 	</script>
 </body>

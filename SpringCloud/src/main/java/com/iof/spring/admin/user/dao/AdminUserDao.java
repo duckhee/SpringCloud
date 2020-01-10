@@ -10,6 +10,8 @@ public interface AdminUserDao {
 	public void CreateRaw(UserVO vo);
 	/** Email Check data access object */
 	public UserVO EmailCheckRaw(String Email);
+	/** User Login */
+	public UserVO LoginUser(UserVO vo);
 	/** Member Number */
 	public int CountUser();
 	/** Member list */

@@ -1,11 +1,16 @@
 package com.iof.spring.admin.site.ctrl;
 
+import java.util.Map;
+
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.iof.spring.admin.site.service.AdminSiteService;
 
@@ -23,7 +28,7 @@ public class SiteController {
 	
 	@RequestMapping(value="/")
 	public String SiteMain() {
-		System.out.println("Admin Site Main");
+		System.out.println("Admin Site Main Redirect List Page");
 		return "redirect:/admin/Sites/list";
 	}
 	
@@ -78,10 +83,16 @@ public class SiteController {
 	 */
 	@RequestMapping(value="/list", method=RequestMethod.GET)
 	public String SiteListPage(Model model) {
-		System.out.println("Admin Site List");
+		System.out.println("Admin Site List Page");
 		return "Admin/Site/ListPage";
 	}
 	
+	@RequestMapping(value="/delete", method=RequestMethod.POST)
+	@ResponseBody
+	public String SiteDeleteDo(@RequestBody Map<String, Object> Delete) {
+		System.out.println("Admin Site Delete Do");
+		return "redirect:/admin/Site/list";
+	}
 	
 	
 }

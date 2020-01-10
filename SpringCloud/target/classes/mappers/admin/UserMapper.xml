@@ -43,6 +43,13 @@ ENGINE = InnoDB;
 		FROM users 
 	</select>
 	
+	<!-- Login User -->
+	<select id="AdminLoginUser" parameterType="user" resultType="user">
+		SELECT UserEmail, UserName, UserPassword, UserLevel  
+		FROM users 
+		WHERE UserEmail=#{UserEmail}
+	</select>
+	
 	<!-- List User -->
 	<select id="AdminListUser" parameterType="user" resultType="user">
 	SELECT id, UserEmail, UserName, UserLevel, createdAt, updatedAt  

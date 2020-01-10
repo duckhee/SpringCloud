@@ -20,9 +20,18 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-	
+	<!-- Package Registe -->
 	<context:component-scan base-package="com.iof.spring" />
 	
-	
-	
+	<!-- InterCeptor Test -->
+	<!-- 
+	<beans:bean id="sample" class="com.iof.spring.interceptor.TestInterceptor"/>
+	<interceptors>
+		<interceptor>
+			<mapping path="/admin/**/**"/>
+			<mapping path="/admin/**/**"/>
+			<beans:ref bean="sample"/>
+		</interceptor>
+	</interceptors>
+	-->
 </beans:beans>
