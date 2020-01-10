@@ -166,6 +166,7 @@ public class AdminMemberController {
 		List<JoinUserVO> user = service.DetailMember(_user);
 		System.out.println("JOIN USER : " + user);
 		ModelAndView MemberDetailView = new ModelAndView();
+		/** Detail View Template Set */
 		MemberDetailView.setViewName("Admin/Member/DetailPage");
 		return MemberDetailView;
 	}
