@@ -9,6 +9,7 @@
  		<!-- Resource make aliases -->
  		<typeAlias type="com.iof.spring.user.model.VO.UserVO" alias ="user"/>
  		<typeAlias type="com.iof.spring.site.model.VO.SiteVO" alias="site"/>
+ 		<!-- Join VO -->
  		<typeAlias type="com.iof.spring.user.model.VO.JoinUserVO" alias ="joinUser"/>
  		<typeAlias type="com.iof.spring.site.model.VO.JoinSiteVO" alias="joinSite"/>
  	</typeAliases>

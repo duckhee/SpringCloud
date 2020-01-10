@@ -21,6 +21,7 @@
 		-->
 		<collection property="site" javaType="joinSite">
 			<result column="name" property="name"/>
+			
 		</collection>
 		
 	</resultMap>
@@ -37,7 +38,7 @@
 			sites site 
 		ON 
 			user.UserEmail = site.Owner 
-		WHERE user.id=#{id}
+		WHERE user.id=#{id} 
 	</select>
 	
 	<!-- Insert Member -->
