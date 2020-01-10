@@ -2,11 +2,7 @@ package com.iof.spring.site.model.VO;
 
 import java.util.Date;
 
-/**
- * @author duckheewon
- *
- */
-public class SiteVO {
+public class JoinSiteVO {
 	
 	private int id;
 	private String name;
@@ -20,6 +16,7 @@ public class SiteVO {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
 	public String getName() {
 		return name;
 	}
@@ -44,11 +41,5 @@ public class SiteVO {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-	@Override
-	public String toString() {
-		return "SiteVO [id=" + id + ", name=" + name + ", Owner=" + Owner + ", createdAt=" + createdAt + ", updatedAt="
-				+ updatedAt + "]";
-	}
-	
-	
+
 }

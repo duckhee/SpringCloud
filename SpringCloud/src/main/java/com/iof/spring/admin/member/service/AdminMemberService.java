@@ -2,8 +2,9 @@ package com.iof.spring.admin.member.service;
 
 import java.util.List;
 
+import com.iof.spring.user.model.VO.JoinUserVO;
 import com.iof.spring.user.model.VO.UserVO;
-import com.iof.spring.util.ValidUtil;
+
 
 public interface AdminMemberService {
 	
@@ -17,7 +18,7 @@ public interface AdminMemberService {
 	public List<UserVO> PagingMember(int page);
 	
 	/** Member Detail */
-	
+	public JoinUserVO DetailMember(UserVO user);
 	
 	/** Member Update */
 	public UserVO UpdateMember(UserVO user);	

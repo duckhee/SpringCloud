@@ -7,6 +7,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.iof.spring.admin.member.dao.AdminMemberDao;
+import com.iof.spring.user.model.VO.JoinUserVO;
 import com.iof.spring.user.model.VO.UserVO;
 import com.iof.spring.util.ValidUtil;
 
@@ -97,6 +98,14 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 		System.out.println("Page : " + page);
 		List<UserVO> MemberPagingList = dao.PagingMember(page);
 		return MemberPagingList;
+	}
+
+	@Override
+	public JoinUserVO DetailMember(UserVO user) {
+		// TODO Auto-generated method stub
+		System.out.println("Admin Member Detail Service");
+		
+		return dao.DetailMember(user);
 	}
 
 	@Override

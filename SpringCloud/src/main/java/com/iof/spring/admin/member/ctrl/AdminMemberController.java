@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iof.spring.admin.member.service.AdminMemberService;
+import com.iof.spring.user.model.VO.JoinUserVO;
 import com.iof.spring.user.model.VO.UserVO;
 import com.iof.spring.util.ValidUtil;
 
@@ -157,8 +158,13 @@ public class AdminMemberController {
 	 */
 	@RequestMapping(value="/detail", method=RequestMethod.GET)
 	public ModelAndView AdminMemberDetailPage(HttpServletRequest request) {
-		String _UserEmail = request.getParameter("Email");
 		System.out.println("Admin Member Detail page");
+		String _UserEmail = request.getParameter("Email");
+		UserVO _user = new UserVO();
+		_user.setId(1);
+		//_user.setUserEmail(_UserEmail);
+		JoinUserVO user = service.DetailMember(_user);
+		System.out.println("JOIN USER : " + user);
 		ModelAndView MemberDetailView = new ModelAndView();
 		MemberDetailView.setViewName("Admin/Member/DetailPage");
 		return MemberDetailView;

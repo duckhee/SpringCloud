@@ -3,6 +3,7 @@ package com.iof.spring.admin.member.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.iof.spring.user.model.VO.JoinUserVO;
 import com.iof.spring.user.model.VO.UserVO;
 
 public interface AdminMemberDao {
@@ -12,6 +13,8 @@ public interface AdminMemberDao {
 	public UserVO FindByEmailMember(String Email);
 	/** Member Email Check */
 	public int EmailCheck(String Email);
+	/** Member Detail */
+	public JoinUserVO DetailMember(UserVO user);
 	/** Count Member Number */
 	public int CountMember();
 	/** Paging Maker Member Use Offset */

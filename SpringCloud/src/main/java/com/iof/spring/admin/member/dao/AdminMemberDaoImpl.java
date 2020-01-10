@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.iof.spring.user.model.VO.JoinUserVO;
 import com.iof.spring.user.model.VO.UserVO;
 
 @Repository("AdminMemberDao")
@@ -45,7 +46,14 @@ public class AdminMemberDaoImpl implements AdminMemberDao {
 		EmailMap.put("email", Email);
 		return session.selectOne("AdminEmailCheckMember", EmailMap);
 	}
-	
+
+	@Override
+	public JoinUserVO DetailMember(UserVO user) {
+		// TODO Auto-generated method stub
+		System.out.println("Admin Member Detail Dao(Use LEFT JOIN)");
+		return session.selectOne("AdminDetailMember", user);
+	}
+
 	/**
 	 * Get Member Number
 	 */
