@@ -1,7 +1,9 @@
 package com.iof.spring.admin.user.ctrl;
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -68,18 +70,23 @@ public class AdminUserController {
 	 * @return
 	 */
 	@RequestMapping(value="/Login", method=RequestMethod.POST)
-	public String UserLogInDo(UserVO user) {
+	public String UserLogInDo(UserVO user, HttpServletRequest request) {
 		System.out.println("Admin User Login Do : " + user);
 		/** Login Service */
 		UserVO _login = service.LoginUser(user);
 		System.out.println("Login Service Value : " + _login);
 		/** Login Info Save Session */
-		HttpSession session;
+		//HttpSession session;
+		Map<String, Object> _LoginSession = new HashMap<String, Object>();
 		
 		/** Login After Do */
 		if(_login == null) {
 			return "redirect:/admin/Users/Login";
 		}else {
+			_LoginSession.put("UserEmail", _login.getUserEmail());
+			_LoginSession.put("UserName", _login.getUserName());
+			_LoginSession.put("UserLevel", _login.getUserLevel());
+			request.getSession().setAttribute("user", _LoginSession);
 			return "redirect:/admin";
 		}
 		
@@ -92,10 +99,19 @@ public class AdminUserController {
 	 * @return
 	 */
 	@RequestMapping(value="/LogOut", method=RequestMethod.POST)
-	public String UserLogOutDo(Model model) {
+	public String UserLogOutDo(Model model, HttpSession session) {
 		System.out.println("Admin User LogOut");
+		/** Session Get Attribute user */
+		if(session.getAttribute("user") == null) {
+			System.out.println("Not Login User");
+			return "redirect:/admin/Users/Login";
+		}
+		System.out.println("Get Session : " + session.getAttribute("user"));
+		/** Session reset */
+		session.invalidate();
 		return "redirect:/admin";
 	}
+	
 	
 	/**
 	 * TODO delete this method

@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page session="true" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,7 +39,7 @@
 		<!-- header -->
 		<header class="main-header">
     			<!-- Logo -->
-    			<a href="<c:url value='/admin'/>" class="logo">
+    			<a href="/" class="logo">
         			<!-- mini logo for sidebar mini 50x50 pixels -->
         			<span class="logo-mini"><b>C</b>&amp;H</span>
         			<!-- logo for regular state and mobile devices -->
@@ -54,24 +55,41 @@
             			<ul class="nav navbar-nav">
                 			<!-- Tasks: style can be found in dropdown.less -->
                 			<!-- header nav 들어가는 부분 -->
+                			<c:if test="${not empty sessionScope.user }">
                 			<!-- User Info -->
                 			<li class="dropdown user user-menu">
                 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 					<img class="user-image">
-                					<span class="hidden-xs">User Name</span>
+                					<span class="hidden-xs">${sessionScope.user.UserEmail}</span>
                 				</a>
                 				<ul class="dropdown-menu">
                 					<li class="user-header">
                 						<img class='img-circle'>
-                						<p>User Name</p>
+                						<p>${sessionScope.user.UserName}</p>
                 					</li>
                 					<li class="user-body">
                 					</li>
                 					<li class="user-footer">
+                						<div class="pull-left">
+                						</div>
+                						<!-- ./Profile -->
+                						<div class="pull-right">
+                							<form name="logout" id="logout" method="" action="">
+                								<button type="button" id="LogOutBtn" class="btn btn-default btn-flat">Sign Out</button>
+                							</form>
+                						</div>
+                						<!-- ./Log Out -->
                 					</li>
                 				</ul>
                 			</li>
                 			<!-- ./User Info -->
+                			</c:if>
+                			<c:if test="${ empty sessionScope.user }">
+                				<li>
+                					<a href="<c:url value='/admin/Users/Login'/>">Login</a>
+                				</li>
+                				<!-- ./User Not Login -->
+                			</c:if>
             			</ul>
         			</div>
     			</nav>
