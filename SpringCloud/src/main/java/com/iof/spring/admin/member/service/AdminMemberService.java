@@ -18,7 +18,7 @@ public interface AdminMemberService {
 	public List<UserVO> PagingMember(int page);
 	
 	/** Member Detail */
-	public JoinUserVO DetailMember(UserVO user);
+	public List<JoinUserVO> DetailMember(UserVO user);
 	
 	/** Member Update */
 	public UserVO UpdateMember(UserVO user);	

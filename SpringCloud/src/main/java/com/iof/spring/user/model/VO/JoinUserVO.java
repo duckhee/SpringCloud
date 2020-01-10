@@ -5,11 +5,13 @@ import java.util.List;
 
 import com.iof.spring.site.model.VO.JoinSiteVO;
 
+
 public class JoinUserVO {
 
 	/**
 	 * Index 
 	 */
+	
 	private int id;
 	/**
 	 * User Email
@@ -39,7 +41,7 @@ public class JoinUserVO {
 	/**
 	 * User Site
 	 */
-	private List<JoinSiteVO> Site;
+	private JoinSiteVO Site;
 
 	/**
 	 * Getter Setter 
@@ -89,10 +91,10 @@ public class JoinUserVO {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-	public List<JoinSiteVO> getSite() {
+	public JoinSiteVO getSite() {
 		return Site;
 	}
-	public void setSite(List<JoinSiteVO> site) {
+	public void setSite(JoinSiteVO site) {
 		Site = site;
 	}
 	@Override

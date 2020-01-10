@@ -163,7 +163,7 @@ public class AdminMemberController {
 		UserVO _user = new UserVO();
 		_user.setId(1);
 		//_user.setUserEmail(_UserEmail);
-		JoinUserVO user = service.DetailMember(_user);
+		List<JoinUserVO> user = service.DetailMember(_user);
 		System.out.println("JOIN USER : " + user);
 		ModelAndView MemberDetailView = new ModelAndView();
 		MemberDetailView.setViewName("Admin/Member/DetailPage");

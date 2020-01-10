@@ -8,6 +8,7 @@
 	<resultMap type="joinSite" id="JoinSiteResult">
 		<result column="name" property="name"/>
 	</resultMap>
+	<!-- Return Map Setting Call resultMap -->
 	<resultMap type="joinUser" id="JoinUserResult">
 		<id column="id" property="id"/>
 		<result column="UserEmail" property="UserEmail"/>
@@ -18,14 +19,14 @@
 			collection => 1 : 다 관계 (한명의 유저가 작성한 글 목록)
 			일반 컬럼과 pk 구분 가능 pk 칼럼에게는 result 아닌 id 사용
 		-->
-		<collection javaType="joinSite" property="JoinSite">
+		<collection property="site" javaType="joinSite">
 			<result column="name" property="name"/>
 		</collection>
 		
 	</resultMap>
 	
 	<!--  Join User Site -->
-	<select id="AdminDetailMember" parameterType="user" resultType="joinUser">
+	<select id="AdminDetailMember" parameterType="user" resultMap="JoinUserResult">
 		SELECT 
 			user.UserEmail, 
 			user.UserName, 
