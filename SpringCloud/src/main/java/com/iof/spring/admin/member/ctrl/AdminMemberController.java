@@ -39,7 +39,7 @@ public class AdminMemberController {
 	 * Member Registe Page
 	 * @return RegistePage.jsp
 	 */
-	@RequestMapping(value="Registe", method=RequestMethod.GET)
+	@RequestMapping(value="/Registe", method=RequestMethod.GET)
 	public String RegisteMemberPage() {
 		System.out.println("Admin Member Registe Page");
 		return "Admin/Member/RegistePage";
@@ -49,7 +49,7 @@ public class AdminMemberController {
 	 * Member having Check
 	 * @return
 	 */
-	@RequestMapping(value="checkEmail", method=RequestMethod.POST)
+	@RequestMapping(value="/checkEmail", method=RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> EmailCheck(@RequestBody Map<String, String> Email, ValidUtil valid){
 		System.out.println("Admin Member Registe Email Check Controller");
@@ -112,9 +112,11 @@ public class AdminMemberController {
 		int InsertFlag = service.RegisteMember(newUser);
 		/** Insert Result Check */
 		if(InsertFlag > 0) {
+			System.out.println("Admin Member Registe");
 			return "redirect:/admin/Members/list";
 		}else {
-			return "redirect:/admin/Members/list";
+			System.out.println("Admin Member Not Registe");
+			return "redirect:/admin/Members/Registe";
 		}
 		
 	}

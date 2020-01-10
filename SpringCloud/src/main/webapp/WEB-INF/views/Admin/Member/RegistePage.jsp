@@ -296,10 +296,19 @@
 				dataType:'json',
 				contentType:'application/json',
 				data:JSON.stringify({
-					Email:"admin@co.kr"
+					Email:CheckEmail
 				}),
 				success:function(data){
 					console.log("data : ", data);
+					if(data.flag == false){
+						return Swal.fire({
+							type:'warning',
+							title:data.message
+						});
+					}else{
+						console.log("Success");
+						return $("#EmailCheckFlag").val(data.flag);
+					}
 				},
 				error:function(request, status, error){
 					console.log("EMAIL NESTING CHECK ERROR");
@@ -311,6 +320,7 @@
 	/** Function Email Null Check */
 	function EmailCheck(){
 		let Email = $("#UserEmail").val();
+		let EmailFlag = $("#EmailCheckFlag").val();
 		console.log("Email : ", Email);
 		if(Email.indexOf(' ') !== -1){
 			Swal.fire({
@@ -330,6 +340,13 @@
 			Swal.fire({
 				type:'warning',
 				title:"Not Empty"
+			});
+			return null;
+		}
+		if(EmailFlag == false || !EmailFlag ){
+			Swal.fire({
+				type:'warning',
+				title:'Email Check First'
 			});
 			return null;
 		}
@@ -433,9 +450,8 @@
 			if(flag == true){
 				console.log("Create Do");
 				document.create.method="post";
-				//document.cretae.action = "";
+				document.create.action = "<c:url value='/admin/Members/Registe'/>";
 			}
-			
 			
 			
 		});
