@@ -1,43 +1,38 @@
-package com.iof.spring.site.model.VO;
+package com.iof.spring.plot.model.VO;
 
 import java.util.Date;
 
-import com.iof.spring.plot.model.VO.JoinPlotVO;
-
-public class JoinSiteVO {
+public class PlotVO {
 	
 	private int id;
-	private String name;
+	private String PlotName;
 	private String Owner;
+	private int SiteIdx;
 	private Date createdAt;
 	private Date updatedAt;
-	
-	private JoinPlotVO plot;
-
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	
-	public String getName() {
-		return name;
+	public String getPlotName() {
+		return PlotName;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setPlotName(String plotName) {
+		PlotName = plotName;
 	}
 	public String getOwner() {
 		return Owner;
 	}
 	public void setOwner(String owner) {
 		Owner = owner;
-	}	
-	public JoinPlotVO getPlot() {
-		return plot;
 	}
-	public void setPlot(JoinPlotVO plot) {
-		this.plot = plot;
+	public int getSiteIdx() {
+		return SiteIdx;
+	}
+	public void setSiteIdx(int siteIdx) {
+		SiteIdx = siteIdx;
 	}
 	public Date getCreatedAt() {
 		return createdAt;
@@ -53,8 +48,10 @@ public class JoinSiteVO {
 	}
 	@Override
 	public String toString() {
-		return "JoinSiteVO [id=" + id + ", name=" + name + ", Owner=" + Owner + ", createdAt=" + createdAt
-				+ ", updatedAt=" + updatedAt + ", plot=" + plot + "]";
+		return "PlotVO [id=" + id + ", PlotName=" + PlotName + ", Owner=" + Owner + ", SiteIdx=" + SiteIdx
+				+ ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
 	}
 	
+	
+
 }

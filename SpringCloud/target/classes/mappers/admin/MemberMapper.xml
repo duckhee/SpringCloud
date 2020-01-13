@@ -5,8 +5,13 @@
  
 <mapper namespace="com.iof.spring.admin.Mapper.member">
 	<!-- Member Have All Result -->
+	<!-- Site  -->
 	<resultMap type="joinSite" id="JoinSiteResult">
 		<result column="name" property="name"/>
+	</resultMap>
+	<!-- Plot -->
+	<resultMap type="joinPlot" id="JoinPlotResult">
+		
 	</resultMap>
 	<!-- Return Map Setting Call resultMap -->
 	<resultMap type="joinUser" id="JoinUserResult">
@@ -31,6 +36,7 @@
 		SELECT 
 			user.UserEmail, 
 			user.UserName, 
+			<!-- GROUP_CONCAT(site.name) AS name -->
 			site.name 
 		FROM 
 			users user 

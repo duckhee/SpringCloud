@@ -11,6 +11,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<title>Admin Index Page</title>
+	<link rel="shortcut icon" type="image/x-icon" href="<c:url value='/Share/Img/logo.png'/>" >
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
 	<!-- Ionicons -->
@@ -226,7 +227,7 @@
         								<thead>
         									<tr>
         										<td style="width:10px;">
-        											<input type="checkbox" name="th_checkAll" id="th_checkAll" onclick="">
+        											<input type="checkbox" name="AllCick" id="AllCickBtn">
         										</td>
         										<td>
         											User Email
@@ -246,7 +247,7 @@
         									</tr>
         								</thead>
         								<!-- ./thead -->
-        								<tbody>
+        								<tbody id="MemberList-Body">
         									<c:forEach items="${ UserList }" var="UserVO">
         										<tr>
         											<td><input type="checkbox" name="checkRow" value="${ UserVO.getId() }"></td>
@@ -266,17 +267,17 @@
         						<!-- ./box-body -->
         						<div class="box-footer">
         							<div class="pull-left">
-        								<button id="UserDelete" class="btn btn-danger">
+        								<button id="UserDeleteBtn" class="btn btn-danger">
         									<i class="fa fa-fw fa-trash-o" style="margin-right:10px;"></i>
         									Delete
         								</button>
         							</div>
         							<div class="pull-right">
-        								<button id="UserEdit" class="btn btn-warning">
+        								<button id="UserEditBtn" class="btn btn-warning">
         									<i class="fa fa-fw fa-edit" style="margin-right:10px;"></i>
         									Edit
         								</button>
-        								<button id="UserInsert" class="btn btn-primary">
+        								<button id="UserInsertBtn" class="btn btn-primary">
         									<i class="fa fa-fw fa-pencil" style="margin-right:10px;"></i>
         									Registe
         								</button>
@@ -345,4 +346,115 @@
 	<!-- AdminLTE for demo purposes -->
 	<script src="<c:url value='/resources/Admin/dist/js/demo.js'/>"></script>
 	<script src="<c:url value='/resources/Admin/dist/js/app.min.js'/>"></script>
+	<script>
+	
+	/** Function All Click User */
+	function AllClickUser(){
+		$("#AllCickBtn").click(function(){
+			if($("#AllCickBtn").is(":checked")){
+				$("input[name=checkRow]").prop("checked", true);
+			}else{
+				$("input[name=checkRow]").prop("checked", false);
+			}
+		});
+	}
+	
+	/** Function Insert User */
+	function InsertDo(){
+		$("#UserInsertBtn").click(function(){
+			document.location.href="<c:url value='/admin/Members/Registe'/>?id=";	
+		});
+	}
+	
+	/** Function Edit User */
+	function EditDo(){
+		$("#UserEditBtn").click(function(){
+			/** Base Return Url */
+			let _BaseUrl = "<c:url value='/admin/Members/edit'/>";
+			/** Get Edit Member */
+			let _EditMemberList = [];
+			$.each($('input[name=checkRow]:checked'), function(){
+				console.log("Check Value : ", $(this).val());
+				_EditMemberList.push($(this).val());
+			});		
+			console.log("Check Value List : ", _EditMemberList);
+			if(_EditMemberList.length === 0){
+				console.log("Edit Member Not Select");
+				return Swal.fire({
+					type:'warning',
+					title:'Select Edit Member First'
+				});
+			}
+			if(_EditMemberList.length > 1){
+				return Swal.fire({
+					type:'warning',
+					title:'Select Member only One'
+				});
+			}
+			/** Move Edit page */
+			document.location.href= _BaseUrl+_EditMemberList[0];
+		});
+	}
+	
+	/** Function Delete User done Reloading Member List */
+	function ReloadingTable(){
+		$("MemberList-Body").empty();
+	};
+		
+	/** Function Delete User */
+	function DelteDo(){
+		$("#UserDeleteBtn").click(function(){
+			/** Confirm Delete User Value */
+			let _DeleteUser = [];
+			/** Confirm Delete User Name */
+			let _DeleteUserName = [];
+			/** Check Value Each */
+			$.each($('input[name=checkRow]:checked'),function(){
+				/** Get Delete User Check Value */
+				_DeleteUser.push($(this).val());
+				/** Get Delete User Name */
+				_DeleteUserName.push($(this).parent('td').next().html());
+			});
+			/** Not Check Value */
+			if(_DeleteUser.length == 0){
+				return Swal.fire({
+					type:'warning',
+					title:'Check Delete User First'
+				});
+			}else{
+				/** Delete User */
+				Swal.fire({
+					title:'Are you sure Delete User ?',
+					type:'question',
+					html:'<p style="font-size:20px;">'+_DeleteUserName+'</p>',
+					showCancelButton:true
+				}).then(result=>{
+					if(result.value){
+						console.log("Check Confirm Done(Delete)");
+						return true;
+					}
+					console.log("Check Confirm Done(Not Delete)");
+					return false;
+				});
+			}
+		});
+	}
+	
+	/** Function All Member List Init */
+	function _Init(){
+		/** Check All User */
+		AllClickUser();
+		/** Redirect Create User */
+		InsertDo();
+		/** Redirect Edit User */
+		EditDo();
+		/** Ajax Delete User */
+		DelteDo();
+	}
+	
+	$(function(){
+		_Init();
+	});
+	
+	</script>
 </html>

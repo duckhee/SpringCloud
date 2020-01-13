@@ -7,6 +7,12 @@
     http://www.springframework.org/schema/security
     http://www.springframework.org/schema/security/spring-security.xsd">
        
-    <beans:bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />  
- 
+    <beans:bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+    <!-- CSRF Setting -->
+    <!--   
+ 	<http use-expressions="true">
+ 		<intercept-url pattern="/**/admin/" requires-channel="http"/>
+ 		<csrf disabled="false"/>
+ 	</http>
+ 	 -->
 </beans:beans>
