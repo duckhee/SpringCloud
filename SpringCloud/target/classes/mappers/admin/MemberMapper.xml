@@ -10,6 +10,7 @@
 		<result column="name" property="name"/>
 		<result column="createdAt" property="createdAt"/>
 	</resultMap>
+	
 	<!-- Plot -->
 	<resultMap type="joinPlot" id="JoinPlotResult">
 		
@@ -19,30 +20,33 @@
 		association => 1 : 1 관계 
 		collection => 1 : 다 관계 (한명의 유저가 작성한 글 목록)
 		일반 컬럼과 pk 구분 가능 pk 칼럼에게는 result 아닌 id 사용
+		need to primary key
 	-->
 	<!-- <association property="JoinSite"/> -->
 	<resultMap type="joinUser" id="JoinUserResult">
-		<id column="id" property="id"/>
+		<id column="id" property="id" />
 		<result column="UserEmail" property="UserEmail"/>
 		<result column="UserName" property="UserName"/>
 		<result column="UserLevel" property="UserLevel"/>
 		<result column="createdAt" property="createdAt"/>
 		<!-- Join site -->
 		<collection property="Site" javaType="java.util.List" ofType="joinSite">
+			<id column='siteId' property="id"/>
 			<result column="siteName" property="name"/>
 			<result column="siteCreatedAt" property="createdAt"/>
 		</collection>
-		
 	</resultMap>
 	
 	<!--  Join User Site -->
-	<select id="AdminDetailMember" parameterType="user" resultMap="JoinUserResult">
+	<select id="AdminDetailMember" parameterType="user" resultMap="JoinUserResult" >
 		SELECT 
+			user.id, 
 			user.UserEmail, 
 			user.UserName, 
 			user.UserLevel, 
 			user.createdAt,  
 			<!-- GROUP_CONCAT(site.name) AS name -->
+			site.id as siteId, 
 			site.name as siteName, 
 			site.createdAt as siteCreatedAt 
 		FROM 

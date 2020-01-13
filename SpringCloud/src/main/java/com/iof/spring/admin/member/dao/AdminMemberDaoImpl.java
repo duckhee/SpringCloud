@@ -56,11 +56,11 @@ public class AdminMemberDaoImpl implements AdminMemberDao {
 	 * Get Member Detail 
 	 */
 	@Override
-	public List<JoinUserVO> DetailMember(UserVO user) {
-	//public JoinUserVO DetailMember(UserVO user) {
+	//public List<JoinUserVO> DetailMember(UserVO user) {
+	public JoinUserVO DetailMember(UserVO user) {
 		// TODO Auto-generated method stub
 		System.out.println("Admin Member Detail Dao(Use LEFT JOIN)");
-		return session.selectList("AdminDetailMember", user);
+		return session.selectOne("AdminDetailMember", user); 	
 	}
 	
 	/**

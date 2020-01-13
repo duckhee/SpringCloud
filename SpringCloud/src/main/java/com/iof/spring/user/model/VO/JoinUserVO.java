@@ -45,6 +45,27 @@ public class JoinUserVO {
 	 */
 	private List<JoinSiteVO> Site;
 
+	
+	public JoinUserVO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	public JoinUserVO(int id, String userEmail, String userName, String userPassword, int userLevel, Date createdAt,
+			Date updatedAt, List<JoinSiteVO> site) {
+		super();
+		this.id = id;
+		UserEmail = userEmail;
+		UserName = userName;
+		UserPassword = userPassword;
+		UserLevel = userLevel;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+		Site = site;
+	}
+
+
 	/**
 	 * Getter Setter 
 	 * @return

@@ -234,8 +234,8 @@ public class AdminMemberController {
 		/** Detail View Page Search Parameter */
 		_user.setId(UserId);
 		//_user.setUserEmail(_UserEmail);
-		List<JoinUserVO> user = service.DetailMember(_user);
-		//JoinUserVO user = service.DetailMember(_user);
+		//List<JoinUserVO> user = service.DetailMember(_user);
+		JoinUserVO user = service.DetailMember(_user);
 		System.out.println("JOIN USER : " + user);
 		/** Detail User Data */
 		MemberDetailView.addObject("user", user);
@@ -281,8 +281,8 @@ public class AdminMemberController {
 		System.out.println("Edit Member Id : " + EditMemberId);
 		/** Detail Find Set UserVO */
 		_FindUser.setId(EditMemberId);
-		List<JoinUserVO> _DetailUser = service.DetailMember(_FindUser);
-		//JoinUserVO _DetailUser = service.DetailMember(_FindUser);
+		//List<JoinUserVO> _DetailUser = service.DetailMember(_FindUser);
+		JoinUserVO _DetailUser = service.DetailMember(_FindUser);
 		/** Set User Data */
 		EditView.addObject("DetailUser", _DetailUser);
 		/** Set Edit View Page Set */

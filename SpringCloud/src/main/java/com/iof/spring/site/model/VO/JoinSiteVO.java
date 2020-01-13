@@ -14,6 +14,27 @@ public class JoinSiteVO {
 	private Date updatedAt;
 	
 	private JoinPlotVO plot;
+	
+	
+
+	public JoinSiteVO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	public JoinSiteVO(int id, String name, String owner, int site_cnt, Date createdAt, Date updatedAt,
+			JoinPlotVO plot) {
+		super();
+		this.id = id;
+		this.name = name;
+		Owner = owner;
+		this.site_cnt = site_cnt;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+		this.plot = plot;
+	}
+
 
 	public int getId() {
 		return id;
