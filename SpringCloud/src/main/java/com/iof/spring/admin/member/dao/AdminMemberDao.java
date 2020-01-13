@@ -15,6 +15,8 @@ public interface AdminMemberDao {
 	public int EmailCheck(String Email);
 	/** Member Detail */
 	public List<JoinUserVO> DetailMember(UserVO user);
+	/** Member Delete */
+	public int DeleteMember(UserVO user);
 	/** Count Member Number */
 	public int CountMember();
 	/** Paging Maker Member Use Offset */

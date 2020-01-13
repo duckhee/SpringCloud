@@ -198,15 +198,69 @@
 			<!-- ./left side bar -->
 		<!-- ./left side bar -->
 		<div class="content-wrapper">
+			<div class="content-header">
+				<h1>Member<small> Detail</small></h1>
+				<ol class="breadcrumb">
+					<li><i class="fa fa-fw fa-users" style="margin-right:5px;"></i>Member</li>
+					<li class="active">Detail</li>
+				</ol>
+			</div>
+			<!-- ./content-header -->
         		<div class="content">
+        			<div class="row">
+        				<div class="col-md-12 col-xs-12">
+        					<div class="box">
+        						<div class="box-header">
+        							<h3 class="box-title">
+        								<i class="fa fa-fw fa-user" style="margin-right:10px;"></i>
+        								Member Detail
+        							</h3>
+        							<div class="box-tools">
+        							</div>
+        							<!-- ./box-tools -->
+        						</div>
+        						<!-- ./box-header -->
+        						<div class="box-body">
+        						
+        						</div>
+        						<div class="box-footer">
+        							<div class="pull-left">
+        								<button type="button" class="btn btn-danger">
+        									<i class="fa fa-fw fa-trash-o" style="margin-right:10px;"></i>
+        									Delete
+        								</button>
+        							</div>
+        							<div class="pull-right">
+        								<button type="button" id="EditBtn" class="btn btn-warning">
+        									<i class="fa fa-fw fa-edit" style="margin-right:10px;"></i>
+        									Edit
+        								</button>
+        								<!-- ./edit button -->
+        							</div>
+        						</div>
+        					</div>
+        					<!-- ./box -->
+        				</div>
+        				<!-- ./col-md-12 col-xs-12 -->
+        			</div>
+        			<!-- ./row -->
+        			<!-- test-code -->
         			<div>
-        			 ${ user[0].getUserEmail() } 
+        			 user Email : ${ user[0].getUserEmail() }<br>
+        			 user Name : ${ user[0].getUserName() }<br>
+        			 user Level : ${ user[0].getUserLevel() }<br>
+        			 user CreatedAt : ${ user[0].getCreatedAt() } <br> 
+        			 Site Value : ${user.size() }
         			</div>
                 <div>
                 	<c:forEach items="${ user }" var="JoinUserVO">
-                		${JoinUserVO.getSite().getName() }
+                		<div>
+                			site Name : ${JoinUserVO.getSite().getName() }<br>
+                			site CreatedAt : ${JoinUserVO.getSite().getCreatedAt() }
+                		</div>
                 	</c:forEach>
                 </div>
+                <!-- ./test-code -->
             </div>
             <!--/.content-->
         </div>

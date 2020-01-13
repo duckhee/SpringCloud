@@ -9,6 +9,7 @@ public class JoinSiteVO {
 	private int id;
 	private String name;
 	private String Owner;
+	private int site_cnt;
 	private Date createdAt;
 	private Date updatedAt;
 	
@@ -30,15 +31,6 @@ public class JoinSiteVO {
 	public String getOwner() {
 		return Owner;
 	}
-	public void setOwner(String owner) {
-		Owner = owner;
-	}	
-	public JoinPlotVO getPlot() {
-		return plot;
-	}
-	public void setPlot(JoinPlotVO plot) {
-		this.plot = plot;
-	}
 	public Date getCreatedAt() {
 		return createdAt;
 	}
@@ -51,10 +43,27 @@ public class JoinSiteVO {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+	public void setOwner(String owner) {
+		Owner = owner;
+	}	
+	public int getSite_cnt() {
+		return site_cnt;
+	}
+	public void setSite_cnt(int site_cnt) {
+		this.site_cnt = site_cnt;
+	}
+	public JoinPlotVO getPlot() {
+		return plot;
+	}
+	public void setPlot(JoinPlotVO plot) {
+		this.plot = plot;
+	}
+	
 	@Override
 	public String toString() {
-		return "JoinSiteVO [id=" + id + ", name=" + name + ", Owner=" + Owner + ", createdAt=" + createdAt
-				+ ", updatedAt=" + updatedAt + ", plot=" + plot + "]";
+		return "JoinSiteVO [id=" + id + ", name=" + name + ", Owner=" + Owner + ", site_cnt=" + site_cnt
+				+ ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + ", plot=" + plot + "]";
 	}
+	
 	
 }

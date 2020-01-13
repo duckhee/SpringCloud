@@ -8,25 +8,29 @@
 	<!-- Site  -->
 	<resultMap type="joinSite" id="JoinSiteResult">
 		<result column="name" property="name"/>
+		<result column="createdAt" property="createdAt"/>
 	</resultMap>
 	<!-- Plot -->
 	<resultMap type="joinPlot" id="JoinPlotResult">
 		
 	</resultMap>
 	<!-- Return Map Setting Call resultMap -->
+	<!-- 1 : 다 관계의 경우 데이터 매핑시켜준다. 
+		association => 1 : 1 관계 
+		collection => 1 : 다 관계 (한명의 유저가 작성한 글 목록)
+		일반 컬럼과 pk 구분 가능 pk 칼럼에게는 result 아닌 id 사용
+	-->
+	<!-- <association property="JoinSite"/> -->
 	<resultMap type="joinUser" id="JoinUserResult">
 		<id column="id" property="id"/>
 		<result column="UserEmail" property="UserEmail"/>
 		<result column="UserName" property="UserName"/>
-		<!-- <association property="JoinSite"/> -->
-		<!-- 1 : 다 관계의 경우 데이터 매핑시켜준다. 
-			association => 1 : 1 관계 
-			collection => 1 : 다 관계 (한명의 유저가 작성한 글 목록)
-			일반 컬럼과 pk 구분 가능 pk 칼럼에게는 result 아닌 id 사용
-		-->
+		<result column="UserLevel" property="UserLevel"/>
+		<result column="createdAt" property="createdAt"/>
+		<!-- Join site -->
 		<collection property="site" javaType="joinSite">
-			<result column="name" property="name"/>
-			
+			<result column="siteName" property="name"/>
+			<result column="siteCreatedAt" property="createdAt"/>
 		</collection>
 		
 	</resultMap>
@@ -36,12 +40,15 @@
 		SELECT 
 			user.UserEmail, 
 			user.UserName, 
-			<!-- GROUP_CONCAT(site.name) AS name -->
-			site.name 
+			user.UserLevel, 
+			user.createdAt,  
+			<!-- GROUP_CONCAT(site.name) AS siteName, -->
+			site.name as siteName, 
+			site.createdAt as siteCreatedAt 
 		FROM 
-			users user 
+			users AS user 
 		LEFT JOIN
-			sites site 
+			sites AS site 
 		ON 
 			user.UserEmail = site.Owner 
 		WHERE user.id=#{id} 
@@ -83,10 +90,40 @@
 		WHERE UserEmail=#{email}
 	</select>
 	
+	<!-- Member Find By UserEmail -->
+	<select id="AdminFindByEmailMember" parameterType="user">
+		SELECT * FROM users 
+		WHERE UserEmail=#{UserEmail}
+	</select>
+	
+	<!-- Update Member -->
+	<update id="AdminUpdateMember" parameterType="user">
+		UPDATE 
+		users 
+		SET UserEmail=#{UserEmail}, 
+		UserName=#{UserName}, 
+		UserLevel=#{UserLevel}, 
+		UserPassword=#{UserPassword}, 
+		updatedAt=#{updatedAt} 
+		WHERE id=#{id}
+	</update>
+	
+	<!-- Delete Member -->
+	<delete id="AdminDeleteMember" parameterType="user">
+		DELETE FROM users 
+		WHERE UserEmail=#{UserEmail}
+	</delete>
+	
 	<!-- Count Member -->
 	<select id="AdminCountMember" resultType="int">
 		SELECT COUNT(id) 
 		FROM users 
+	</select>
+	
+	<!-- All Member List -->
+	<select id="AdminListMember" parameterType="user" resultType="user">
+		SELECT id, UserEmail, UserName, UserLevel, createdAt, updatedAt 
+		FROM users ORDER BY id DESC
 	</select>
 	
 	<!-- Paging Member -->

@@ -119,7 +119,8 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 	public int DeleteMember(UserVO user) {
 		// TODO Auto-generated method stub
 		System.out.println("Admin Member Delete Service");
-		return 0;
+		int _DeleteFlag = dao.DeleteMember(user);
+		return _DeleteFlag;
 	}
 
 

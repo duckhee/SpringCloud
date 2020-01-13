@@ -50,7 +50,7 @@ ENGINE = InnoDB;
 		WHERE UserEmail=#{UserEmail}
 	</select>
 	
-	<!-- List User -->
+	<!-- All List User -->
 	<select id="AdminListUser" parameterType="user" resultType="user">
 	SELECT id, UserEmail, UserName, UserLevel, createdAt, updatedAt  
 	FROM users ORDER BY id DESC

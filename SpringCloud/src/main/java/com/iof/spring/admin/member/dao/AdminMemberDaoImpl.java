@@ -17,14 +17,19 @@ public class AdminMemberDaoImpl implements AdminMemberDao {
 	@Autowired
 	private SqlSession session;
 	
-
+	/**
+	 * Registe Member 
+	 */
 	@Override
 	public int RegisteMember(UserVO vo) {
 		// TODO Auto-generated method stub
 		System.out.println("Admin Member Registe Dao");
 		return session.insert("AdminRegisteMember", vo);
 	}
-
+	
+	/**
+	 * Get Member By UserEmail
+	 */
 	@Override
 	public UserVO FindByEmailMember(String Email) {
 		// TODO Auto-generated method stub
@@ -46,13 +51,27 @@ public class AdminMemberDaoImpl implements AdminMemberDao {
 		EmailMap.put("email", Email);
 		return session.selectOne("AdminEmailCheckMember", EmailMap);
 	}
-
+	
+	/**
+	 * Get Member Detail 
+	 */
 	@Override
 	public List<JoinUserVO> DetailMember(UserVO user) {
 		// TODO Auto-generated method stub
 		System.out.println("Admin Member Detail Dao(Use LEFT JOIN)");
 		return session.selectList("AdminDetailMember", user);
 	}
+	
+	/**
+	 * Get Member Delete
+	 */
+	@Override
+	public int DeleteMember(UserVO user) {
+		// TODO Auto-generated method stub
+		System.out.println("Admin Member Delete Dao");
+		return session.delete("AdminDeleteMember", user);
+	}
+
 
 	/**
 	 * Get Member Number

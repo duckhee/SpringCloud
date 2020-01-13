@@ -197,15 +197,45 @@ public class AdminMemberController {
 	@RequestMapping(value="/detail", method=RequestMethod.GET)
 	public ModelAndView AdminMemberDetailPage(HttpServletRequest request) {
 		System.out.println("Admin Member Ctrl Detail page");
+		/** Model And View Call */
+		ModelAndView MemberDetailView = new ModelAndView();
 		String _UserEmail = request.getParameter("Email");
 		String _UserId = request.getParameter("id");
+		int UserId;
+		String _pre = request.getHeader("Referer");
 		UserVO _user = new UserVO();
+		/** Check User Parameter Type */
+		if(_UserId == null) {
+			/** Return Previous Page */
+			if(_pre == null) {
+				/** Previous page not have */
+				MemberDetailView.setViewName("redirect:/admin/Members/list");
+			}else {
+				/** Return Previous Page */
+				System.out.println("Previous Page : " + _pre);
+				MemberDetailView.setViewName("redirect:"+_pre);
+			}
+			return MemberDetailView;
+		}
+		try {
+			UserId = Integer.parseInt(_UserId);
+		}catch(NumberFormatException e) {
+			/** Return Previous Page */
+			if(_pre == null) {
+				/** Previous page not have */
+				MemberDetailView.setViewName("redirect:/admin/Members/list");
+			}else {
+				/** Return Previous Page */
+				System.out.println("Previous Page : " + _pre);
+				MemberDetailView.setViewName("redirect:"+_pre);
+			}
+			return MemberDetailView;
+		}
 		/** Detail View Page Search Parameter */
-		_user.setId(1);
+		_user.setId(UserId);
 		//_user.setUserEmail(_UserEmail);
 		List<JoinUserVO> user = service.DetailMember(_user);
 		System.out.println("JOIN USER : " + user);
-		ModelAndView MemberDetailView = new ModelAndView();
 		/** Detail User Data */
 		MemberDetailView.addObject("user", user);
 		/** Detail View Template Set */
