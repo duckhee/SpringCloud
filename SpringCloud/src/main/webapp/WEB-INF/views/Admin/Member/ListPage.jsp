@@ -370,7 +370,7 @@
 	function EditDo(){
 		$("#UserEditBtn").click(function(){
 			/** Base Return Url */
-			let _BaseUrl = "<c:url value='/admin/Members/edit'/>";
+			let _BaseUrl = "<c:url value='/admin/Members/edit'/>?id=";
 			/** Get Edit Member */
 			let _EditMemberList = [];
 			$.each($('input[name=checkRow]:checked'), function(){

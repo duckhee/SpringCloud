@@ -246,19 +246,19 @@
         			<!-- ./row -->
         			<!-- test-code -->
         			<div>
-        			 user Email : ${ user[0].getUserEmail() }<br>
+        			 <%-- user Email : ${ user[0].getUserEmail() }<br>
         			 user Name : ${ user[0].getUserName() }<br>
         			 user Level : ${ user[0].getUserLevel() }<br>
         			 user CreatedAt : ${ user[0].getCreatedAt() } <br> 
-        			 Site Value : ${user.size() }
+        			 Site Value : ${user.size() } --%>
         			</div>
                 <div>
-                	<c:forEach items="${ user }" var="JoinUserVO">
+               <%--  	<c:forEach items="${ user }" var="JoinSiteVO">
                 		<div>
                 			site Name : ${JoinUserVO.getSite().getName() }<br>
                 			site CreatedAt : ${JoinUserVO.getSite().getCreatedAt() }
                 		</div>
-                	</c:forEach>
+                	</c:forEach> --%>
                 </div>
                 <!-- ./test-code -->
             </div>

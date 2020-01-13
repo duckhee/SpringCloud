@@ -3,6 +3,8 @@ package com.iof.spring.user.model.VO;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Many;
+
 import com.iof.spring.site.model.VO.JoinSiteVO;
 
 
@@ -41,7 +43,7 @@ public class JoinUserVO {
 	/**
 	 * User Site
 	 */
-	private JoinSiteVO Site;
+	private List<JoinSiteVO> Site;
 
 	/**
 	 * Getter Setter 
@@ -91,11 +93,11 @@ public class JoinUserVO {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-	public JoinSiteVO getSite() {
+	public List<JoinSiteVO> getSite() {
 		return Site;
 	}
-	public void setSite(JoinSiteVO site) {
-		Site = site;
+	public void setSite(List<JoinSiteVO> Site) {
+		this.Site = Site;
 	}
 	@Override
 	public String toString() {

@@ -28,7 +28,7 @@
 		<result column="UserLevel" property="UserLevel"/>
 		<result column="createdAt" property="createdAt"/>
 		<!-- Join site -->
-		<collection property="site" javaType="joinSite">
+		<collection property="Site" javaType="java.util.List" ofType="joinSite">
 			<result column="siteName" property="name"/>
 			<result column="siteCreatedAt" property="createdAt"/>
 		</collection>
@@ -42,7 +42,7 @@
 			user.UserName, 
 			user.UserLevel, 
 			user.createdAt,  
-			<!-- GROUP_CONCAT(site.name) AS siteName, -->
+			<!-- GROUP_CONCAT(site.name) AS name -->
 			site.name as siteName, 
 			site.createdAt as siteCreatedAt 
 		FROM 

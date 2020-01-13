@@ -10,6 +10,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<title>Server Error</title>
+	<link rel="shortcut icon" type="image/x-icon" href="<c:url value='/resources/Share/Img/logo.png'/>" >
 	<!-- Google font -->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:700,900" rel="stylesheet">
 	<link href="<c:url value='/resources/Error/style.css'/>" rel="stylesheet">

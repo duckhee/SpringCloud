@@ -102,6 +102,7 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 
 	@Override
 	public List<JoinUserVO> DetailMember(UserVO user) {
+	//public JoinUserVO DetailMember(UserVO user) {
 		// TODO Auto-generated method stub
 		System.out.println("Admin Member Detail Service");
 		

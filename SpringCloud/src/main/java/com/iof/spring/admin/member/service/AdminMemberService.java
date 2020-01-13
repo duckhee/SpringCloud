@@ -19,6 +19,7 @@ public interface AdminMemberService {
 	
 	/** Member Detail */
 	public List<JoinUserVO> DetailMember(UserVO user);
+	//public JoinUserVO DetailMember(UserVO user);
 	
 	/** Member Update */
 	public UserVO UpdateMember(UserVO user);	
