@@ -3,5 +3,36 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.iof.spring.admin.Mapper.plot">
-
+	<!-- Insert Plots -->
+	<insert id="" parameterType="">
+		INSERT INTO 
+		plots (
+				id, 
+				PlotName, 
+				Owner, 
+				SiteIdx, 
+				createdAt, 
+				updatedAt
+			)  
+		VALUES (
+			#{id}, 
+			#{PlotName}, 
+			#{Owner}, 
+			#{SiteIdx}, 
+			#{createdAt}, 
+			#{updatedAt}
+		)
+	</insert>
+	<!-- Detail Plots -->
+	<select id="" parameterMap="" resultType="">
+	</select>
+	<!-- Update Plots -->
+	<update id="">
+	</update>
+	<!-- Delete Plots -->
+	<delete id="" parameterMap="">
+		DELETE 
+		FROM plots 
+		WHERE id=#{id} 
+	</delete>
 </mapper>

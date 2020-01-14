@@ -182,7 +182,8 @@ public class SiteController {
 		Map<String, Object> _ReloadSite = _ReloadSiteParameter;
 		System.out.println("Get Parameter : " + _ReloadSite);
 		/** Get Reload Site List Data List */
-		List<SiteVO> _ReloadList = null;
+		//TODO
+		List<SiteVO> _ReloadList = service.PagingSite(0);
 		return _ReloadList;
 	}
 	
