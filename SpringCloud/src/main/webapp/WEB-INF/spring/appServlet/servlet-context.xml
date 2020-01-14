@@ -24,14 +24,21 @@
 	<context:component-scan base-package="com.iof.spring" />
 	
 	<!-- InterCeptor Test -->
-	<!-- 
-	<beans:bean id="sample" class="com.iof.spring.interceptor.TestInterceptor"/>
+	<!-- Sample InterCeptor -->
+	<!-- <beans:bean id="sample" class="com.iof.spring.interceptor.TestInterceptor"/> -->
+	<!-- Admin Login InterCeptor -->
+	 
+	<beans:bean id="AdminInterceptor" class="com.iof.spring.interceptor.AdminInterceptor"/>
 	<interceptors>
 		<interceptor>
 			<mapping path="/admin/**/**"/>
 			<mapping path="/admin/**/**"/>
-			<beans:ref bean="sample"/>
+			<!-- Admin Interceptor exclude -->
+			<exclude-mapping path="/admin/Users/Login"/>
+			<beans:ref bean="AdminInterceptor"/>
 		</interceptor>
 	</interceptors>
-	-->
+	
+	<!-- ./InterCeptor Test -->
+	
 </beans:beans>

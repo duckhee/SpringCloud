@@ -1,6 +1,8 @@
 package com.iof.spring.admin.site.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,10 +32,12 @@ public class AdminSiteDaoImpl implements AdminSiteDao{
 	}
 
 	@Override
-	public List<SiteVO> ListSite(UserVO vo) {
+	public List<SiteVO> AdminPagingSite(int page){
 		// TODO Auto-generated method stub
 		System.out.println("Admin Site List Dao");
-		return null;
+		Map<String, Object> PageMap = new HashMap<String, Object>();
+		PageMap.put("page", page);
+		return session.selectList("AdminPagingSite", PageMap);
 	}
 
 	@Override
@@ -47,6 +51,7 @@ public class AdminSiteDaoImpl implements AdminSiteDao{
 	public List<SiteVO> EditSite(SiteVO vo) {
 		// TODO Auto-generated method stub
 		System.out.println("Admin Site Edit Dao");
+		
 		return null;
 	}
 	

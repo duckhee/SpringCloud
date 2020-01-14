@@ -1,6 +1,7 @@
 package com.iof.spring.site.model.VO;
 
 import java.util.Date;
+import java.util.List;
 
 import com.iof.spring.plot.model.VO.JoinPlotVO;
 
@@ -13,7 +14,7 @@ public class JoinSiteVO {
 	private Date createdAt;
 	private Date updatedAt;
 	
-	private JoinPlotVO plot;
+	private List<JoinPlotVO> plot;
 	
 	
 
@@ -24,7 +25,7 @@ public class JoinSiteVO {
 	
 	
 	public JoinSiteVO(int id, String name, String owner, int site_cnt, Date createdAt, Date updatedAt,
-			JoinPlotVO plot) {
+			List<JoinPlotVO> plot) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -73,10 +74,10 @@ public class JoinSiteVO {
 	public void setSite_cnt(int site_cnt) {
 		this.site_cnt = site_cnt;
 	}
-	public JoinPlotVO getPlot() {
+	public List<JoinPlotVO> getPlot() {
 		return plot;
 	}
-	public void setPlot(JoinPlotVO plot) {
+	public void setPlot(List<JoinPlotVO> plot) {
 		this.plot = plot;
 	}
 	

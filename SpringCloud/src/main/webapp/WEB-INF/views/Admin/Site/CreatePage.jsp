@@ -198,6 +198,14 @@
 			<!-- ./left side bar -->
 		<!-- ./left side bar -->
 		<div class="content-wrapper">
+			<div class="content-header">
+				<h1>Site<small> Create</small></h1>
+				<ol class="breadcrumb">
+					<li><i class="fa fa-inbox" style="margin-right:5px;"></i>Site</li>
+					<li class="active">create</li>
+				</ol>
+			</div>
+			<!-- ./content-header -->
         		<div class="content">
                 <!-- Create Site -->
                 <div class="box" style="margin:10% auto; width:75%;">
@@ -217,7 +225,7 @@
                 					</div>
                 					<div class="col-sm-4">
                 						<input type="hidden" id="IdCheck">
-                						<button type="button" id="checkingOwner" class="btn btn-default btn-block">
+                						<button type="button" id="CheckOwnerBtn" class="btn btn-default btn-block">
                 							<i class="fa fa-fw fa-user" style="margin-right:10px;"></i>
                 							Email Check
                 						</button>

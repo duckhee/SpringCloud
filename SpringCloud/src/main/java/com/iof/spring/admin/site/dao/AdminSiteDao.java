@@ -13,8 +13,8 @@ public interface AdminSiteDao {
 	/** Admin List Site Data Access Object */
 	public List<SiteVO> AdminListSite();
 	
-	/** List Site Data Access Object */
-	public List<SiteVO> ListSite(UserVO vo);
+	/** Admin Paging Site Data Access Object */
+	public List<SiteVO> AdminPagingSite(int page);
 	
 	/** Admin Edit Site Data Access Object */
 	public List<SiteVO> EditSite(SiteVO vo); 

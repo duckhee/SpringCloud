@@ -10,6 +10,22 @@ public class PlotVO {
 	private int SiteIdx;
 	private Date createdAt;
 	private Date updatedAt;
+	
+	public PlotVO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public PlotVO(int id, String plotName, String owner, int siteIdx, Date createdAt, Date updatedAt) {
+		super();
+		this.id = id;
+		PlotName = plotName;
+		Owner = owner;
+		SiteIdx = siteIdx;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+	}
+
 	public int getId() {
 		return id;
 	}

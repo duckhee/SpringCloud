@@ -251,7 +251,7 @@
         									<c:forEach items="${ UserList }" var="UserVO">
         										<tr>
         											<td><input type="checkbox" name="checkRow" value="${ UserVO.getId() }"></td>
-        											<td>${ UserVO.getUserEmail() }</td>
+        											<td><a href="<c:url value='/admin/Members/detail?id='/>${ UserVO.getId() }">${ UserVO.getUserEmail() }</a></td>
         											<td>${ UserVO.getUserName() }</td>
         											<td>${ UserVO.getUserLevel() }</td>
         											<td>${ UserVO.getCreatedAt() }</td>

@@ -198,6 +198,14 @@
 			<!-- ./left side bar -->
 		<!-- ./left side bar -->
 		<div class="content-wrapper">
+			<div class="content-header">
+				<h1>Site<small> List</small></h1>
+				<ol class="breadcrumb">
+					<li><i class="fa fa-inbox" style="margin-right:5px;"></i>Site</li>
+					<li class="active">list</li>
+				</ol>
+			</div>
+			<!-- ./content-header -->
         		<div class="content">
                 <!-- List Site -->
                 <div class="box">
@@ -223,7 +231,16 @@
                 				</thead>
                 				<!-- ./table-header -->
                 				<tbody id="site-tbody">
-                				
+                					<c:forEach items="${ SiteList }" var="Site">
+                						<tr>
+                							<td><input type="checkbox" name="checkRow" value="${ Site.getId() }"></td>
+                							<td>${Site.getName()}</td>
+                							<td>${Site.getOwner()}</td>
+                							<td></td>
+                							<td>${Site.getCreatedAt()}</td>
+                							<td>${Site.getUpdatedAt()}</td>
+                						</tr>
+                					</c:forEach>
                 				</tbody>
                 			</table>
                 			<!-- ./list-table -->
