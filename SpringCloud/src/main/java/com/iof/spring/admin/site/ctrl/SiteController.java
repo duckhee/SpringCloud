@@ -73,6 +73,7 @@ public class SiteController {
 	@RequestMapping(value="/edit", method=RequestMethod.GET)
 	public String SiteEditPage(Model model, HttpServletRequest request) {
 		System.out.println("Admin Site Edit Page");
+		/** Get Parameter Site Id */
 		return "Admin/Site/EditPage";
 	}
 	
@@ -84,7 +85,22 @@ public class SiteController {
 	@RequestMapping(value="/edit", method=RequestMethod.POST)
 	public String SiteEditDo(Model model, HttpServletRequest request) {
 		System.out.println("Admin Site Edit Do");
+		/** Get Parameter Site Id */
+		String _GetSiteId = request.getParameter("id");
+		System.out.println("Get Parameter Site Id : " + _GetSiteId);
 		return "redirect:/Sites/list";
+	}
+	
+	/**
+	 * Site Detail Page
+	 * @param model set Detail Value
+	 * @param request get Site Id Parameter
+	 * @return view path
+	 */
+	@RequestMapping(value="/detail", method=RequestMethod.GET)
+	public String SiteDetailPage(Model model, HttpServletRequest request) {
+		System.out.println("Admin Site Detail Page");
+		return "/Admin/Site/DetailPage";
 	}
 	
 	/**
@@ -115,6 +131,18 @@ public class SiteController {
 		model.addAttribute("SiteList", ServiceList);
 		
 		return "Admin/Site/ListPage";
+	}
+	
+	@RequestMapping(value="/realodList", method=RequestMethod.POST)
+	@ResponseBody
+	public List<SiteVO> ReloadList(@RequestBody Map<String, Object> _ReloadSiteParameter){
+		System.out.println("Admin Site Reload List Ctrl");
+		/** Get Reload Site List Parameter */
+		Map<String, Object> _ReloadSite = _ReloadSiteParameter;
+		System.out.println("Get Parameter : " + _ReloadSite);
+		/** Get Reload Site List Data List */
+		List<SiteVO> _ReloadList = null;
+		return _ReloadList;
 	}
 	
 	@RequestMapping(value="/delete", method=RequestMethod.POST)

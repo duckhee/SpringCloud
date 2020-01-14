@@ -91,7 +91,6 @@
 		/** Email Check Function */
 		function EmailCheck(){
 			let Email = $("#UserEmail").val();
-			console.log("User Email : ", Email);
 			
 			if(!regEmailExp.test(Email)){
 				Swal.fire({
@@ -115,8 +114,7 @@
 		}
 		/** Password Check Function */
 		function PasswordCheck(){
-			let Password = $("#UserPassword").val();
-			console.log("User Password : ", Password);
+			let Password = $("#UserPassword").val();			
 			if(!Password){
 				Swal.fire({
 					type:'warning',

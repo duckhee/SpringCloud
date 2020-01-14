@@ -19,14 +19,6 @@ public class TestInterceptor extends HandlerInterceptorAdapter{
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 	throws Exception {
 		System.out.println(">>>>>>>>> pre"); 
-		HttpSession session = request.getSession();
-		/** Session Check */
-		/*
-		@SuppressWarnings("unchecked")
-		Map<String, Object> _LoginSession = (Map<String, Object>) session.getAttribute("user");
-		System.out.println("session Get : " + session.getAttribute("user"));
-		System.out.println("Login Session Level : " + _LoginSession.get("UserLevel"));
-		*/
 		return true ; 
 	}
 	
