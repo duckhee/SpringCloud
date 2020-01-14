@@ -220,8 +220,8 @@
                 		<div class="box-body">
                 			<table class="table table-bordered">
                 				<thead>
-                					<tr>
-                						<td style="width:10px;"><input type="checkbox" name="th_checkAll" id="th_checkAll" onclick=""></td>
+                					<tr style="text-align:center;">
+                						<td style="width:10px;"><input type="checkbox" name="AllClick" id="AllClickBtn"></td>
                 						<td> Site Name</td>
                 						<td>Owner Email</td>
                 						<td>Plot Number</td>
@@ -232,11 +232,11 @@
                 				<!-- ./table-header -->
                 				<tbody id="site-tbody">
                 					<c:forEach items="${ SiteList }" var="Site">
-                						<tr>
+                						<tr style="text-align:center;">
                 							<td><input type="checkbox" name="checkRow" value="${ Site.getId() }"></td>
                 							<td><a href="<c:url value='/admin/Sites/detail?id='/>${Site.getId()}">${Site.getName()}</a></td>
                 							<td>${Site.getOwner()}</td>
-                							<td></td>
+                							<td><span class="badge bg-light-blue">1</span></td>
                 							<td>${Site.getCreatedAt()}</td>
                 							<td>${Site.getUpdatedAt()}</td>
                 						</tr>
@@ -248,18 +248,18 @@
                 		<!-- ./box-body -->
                 		<div class="box-footer clearfix">
                 			<div class="pull-left">
-                				<button type='button' id="Sitedelete" class='btn btn-danger'>
+                				<button type='button' id="SitedeleteBtn" class='btn btn-danger'>
                 					<i class="fa fa-fw fa-trash-o" style="margin-righr:10px;"></i>
                 					Delete
                 				</button>
                 			</div>
                 			<!-- ./pull-left -->
                 			<div class="pull-right">
-                				<button type="button" id="SiteEdit" class="btn btn-warning">
+                				<button type="button" id="SiteEditBtn" class="btn btn-warning">
                 					<i class="fa fa-fw fa-edit" style="magin-right:10px;"></i>
                 					Edit
                 				</button>
-                				<button type="button" id="SiteCreate" class="btn btn-primary">
+                				<button type="button" id="SiteCreateBtn" class="btn btn-primary">
                 					<i class="fa fa-fw fa-pencil" style="margin-right:10px;"></i>
                 					Create
                 				</button>
@@ -320,4 +320,76 @@
 	<!-- AdminLTE for demo purposes -->
 	<script src="<c:url value='/resources/Admin/dist/js/demo.js'/>"></script>
 	<script src="<c:url value='/resources/Admin/dist/js/app.min.js'/>"></script>
+	<script>
+	/** Function All Click User */
+	function AllClickSite(){
+		$("#AllClickBtn").click(function(){
+			if($("#AllClickBtn").is(":checked")){
+				$("input[name=checkRow]").prop("checked", true);
+			}else{
+				$("input[name=checkRow]").prop("checked", false);
+			}
+		});
+	}
+	/** Function Site Create */
+	function CreateDo(){
+		$("#SiteCreateBtn").click(function(){
+			document.location.href = "<c:url value='/admin/Sites/create'/>";
+		});
+	}
+	
+	/** Function Site Edit */
+	function EditDo(){
+		$("#SiteEditBtn").click(function(){
+			let _BaseUrl = "<c:url value='/admin/Sites/edit?id='/>";
+			/** Get Edit Site List */
+			let _EditSiteList = [];
+			$.each($("input[name=checkRow]:checked"), function(){
+				_EditSiteList.push($(this).val());
+			});
+			if(_EditSiteList.length === 0){
+				return Swal.fire({
+					type:'warning',
+					title:'Select Edit Site First'
+				});
+			}
+			if(_EditSiteList.length > 1){
+				return Swal.fire({
+					type:'warning',
+					title:'select Site only One'
+				});
+			}
+			document.location.href=_BaseUrl + _EditSiteList[0];
+		});
+	};
+	
+	/** Function Reload Table */
+	function ReloadingTable(){
+		
+	}
+	
+	/** Function Site Delete */
+	function DeleteDo(){
+		$("#SitedeleteBtn").click(function(){
+			
+		});
+	}
+	
+	/** Function Init Site */
+	function Init(){
+		/** All Click Function Set */
+		AllClickSite();
+		/** Move Create Site Page Set */
+		CreateDo();
+		/** Move Edit Site Page Set */
+		EditDo();
+		/** Delete Site Function Set */
+		DeleteDo();
+	}
+	
+	$(function(){
+		Init();
+	});
+	
+	</script>
 </html>

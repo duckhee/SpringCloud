@@ -4,6 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="com.iof.spring.admin.Mapper.member">
+	<!--  Get All Data Use UserName Users, Sites, Plots, Devices,  -->
+	
 	<!-- Member Have All Result -->
 	<!-- Site  -->
 	<resultMap type="joinSite" id="JoinSiteResult">

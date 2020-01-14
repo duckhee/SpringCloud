@@ -225,9 +225,9 @@
         						<div class="box-body">
         							<table class="table table-bordered">
         								<thead>
-        									<tr>
+        									<tr style="text-align:center;">
         										<td style="width:10px;">
-        											<input type="checkbox" name="AllCick" id="AllCickBtn">
+        											<input type="checkbox" name="AllClick" id="AllClickBtn">
         										</td>
         										<td>
         											User Email
@@ -249,11 +249,11 @@
         								<!-- ./thead -->
         								<tbody id="MemberList-Body">
         									<c:forEach items="${ UserList }" var="UserVO">
-        										<tr>
+        										<tr style="text-align:center;">
         											<td><input type="checkbox" name="checkRow" value="${ UserVO.getId() }"></td>
         											<td><a href="<c:url value='/admin/Members/detail?id='/>${ UserVO.getId() }">${ UserVO.getUserEmail() }</a></td>
         											<td>${ UserVO.getUserName() }</td>
-        											<td>${ UserVO.getUserLevel() }</td>
+        											<td ><span class="">${ UserVO.getUserLevel() }</span></td>
         											<td>${ UserVO.getCreatedAt() }</td>
         											<td>${ UserVO.getUpdatedAt() }</td>
         										</tr>
@@ -350,8 +350,8 @@
 	
 	/** Function All Click User */
 	function AllClickUser(){
-		$("#AllCickBtn").click(function(){
-			if($("#AllCickBtn").is(":checked")){
+		$("#AllClickBtn").click(function(){
+			if($("#AllClickBtn").is(":checked")){
 				$("input[name=checkRow]").prop("checked", true);
 			}else{
 				$("input[name=checkRow]").prop("checked", false);
@@ -362,7 +362,7 @@
 	/** Function Insert User */
 	function InsertDo(){
 		$("#UserInsertBtn").click(function(){
-			document.location.href="<c:url value='/admin/Members/Registe'/>?id=";	
+			document.location.href="<c:url value='/admin/Members/Registe'/>";	
 		});
 	}
 	

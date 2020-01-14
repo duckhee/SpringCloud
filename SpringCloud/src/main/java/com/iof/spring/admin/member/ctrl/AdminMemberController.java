@@ -236,6 +236,12 @@ public class AdminMemberController {
 		//_user.setUserEmail(_UserEmail);
 		//List<JoinUserVO> user = service.DetailMember(_user);
 		JoinUserVO user = service.DetailMember(_user);
+		/** If Not User Data Return List Page */
+		if(user == null) {
+			System.out.println("Not Registe Member");
+			MemberDetailView.setViewName("redirect:/admin/Members/list");
+			return MemberDetailView;
+		}
 		System.out.println("JOIN USER : " + user);
 		/** Detail User Data */
 		MemberDetailView.addObject("user", user);

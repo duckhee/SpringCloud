@@ -8,7 +8,7 @@ import com.iof.spring.user.model.VO.UserVO;
 public interface AdminSiteDao {
 	
 	/** Create Site Data Access Object */
-	public void CreateSite(SiteVO vo);
+	public int CreateSite(SiteVO vo);
 	
 	/** Admin List Site Data Access Object */
 	public List<SiteVO> AdminListSite();
@@ -24,5 +24,8 @@ public interface AdminSiteDao {
 	
 	/** Admin Delete Site Data Access Object */
 	public boolean AdminDeleteSite(SiteVO vo);
+	
+	/** Admin Dtail Site Data Access Object */
+	public SiteVO AdminSiteDetail(SiteVO vo);
 
 }

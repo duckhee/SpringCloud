@@ -11,9 +11,9 @@ public interface AdminSiteService {
 	/** Admin Update Site */
 	public int UpdateSite(SiteVO site);
 	/** Admin Detail Site */
-	public JoinSiteVO DetailSite(SiteVO site);
+	public SiteVO DetailSite(SiteVO site);
 	/** Admin Delete Site */
-	
+	public int DeleteSite(SiteVO site);
 	/** Admin List Site */
 	
 	/** Admin Count Site */

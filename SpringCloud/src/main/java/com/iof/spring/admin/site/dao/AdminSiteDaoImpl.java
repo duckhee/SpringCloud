@@ -18,10 +18,10 @@ public class AdminSiteDaoImpl implements AdminSiteDao{
 	private SqlSession session;
 
 	@Override
-	public void CreateSite(SiteVO vo) {
+	public int CreateSite(SiteVO vo) {
 		// TODO Auto-generated method stub
 		System.out.println("Admin Site Create Dao");
-		
+		return session.insert("AdminCreateSite", vo);
 	}
 
 	@Override
@@ -60,6 +60,13 @@ public class AdminSiteDaoImpl implements AdminSiteDao{
 		System.out.println("Admin Site Edit Dao");
 		
 		return null;
+	}
+
+	@Override
+	public SiteVO AdminSiteDetail(SiteVO vo) {
+		// TODO Auto-generated method stub
+		System.out.println("Admi Site Detail Dao");
+		return session.selectOne("AdminDetailSite", vo);
 	}
 
 	

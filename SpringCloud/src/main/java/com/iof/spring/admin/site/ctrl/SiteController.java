@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.iof.spring.admin.site.service.AdminSiteService;
+import com.iof.spring.site.model.VO.JoinSiteVO;
 import com.iof.spring.site.model.VO.SiteVO;
 
 /**
@@ -109,11 +110,37 @@ public class SiteController {
 		System.out.println("Admin Site Detail Page");
 		/** Get Parameter Site Id */
 		String _GetSiteId = request.getParameter("id");
-		System.out.println("Get Parameter Site Id : " + _GetSiteId);
+		int GetSiteId;
+		/** Get Previous Page Url */
+		String _pre = request.getHeader("Referer");
+		/** Service Input SiteVO */
+		SiteVO _Site = new SiteVO();
 		if(_GetSiteId == null) {
-			System.out.println("Get Not Site Parameter");
-			return "redirect:/admin/Sites/list";
+			/** Return Previous Page */
+			if(_pre == null) {
+				/** Not have Previous Url */
+				return "redirect:/admin/Sites/list";
+			}
+			return "redirect:"+_pre;
 		}
+		/** Change Parameter Type Integer */
+		try {
+			GetSiteId = Integer.parseInt(_GetSiteId);
+		}catch(NumberFormatException e) {
+			System.out.println("Not Number Type Parameter");
+			if(_pre == null) {
+				return "redirect:/admin/Sites/list";
+			}
+			return "redirect:"+_pre;
+		}
+		/** Change Parameter Value */
+		System.out.println("Get Parameter Site Id : " + GetSiteId);
+		_Site.setId(GetSiteId);
+		System.out.println("");
+		SiteVO _ResultVo = service.DetailSite(_Site);
+		System.out.println("_Result VO : " + _ResultVo);
+		/** Set View Model Result Value */
+		model.addAttribute("SiteInfo", _ResultVo);
 		return "/Admin/Site/DetailPage";
 	}
 

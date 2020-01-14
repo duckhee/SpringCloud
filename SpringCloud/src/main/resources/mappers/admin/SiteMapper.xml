@@ -34,7 +34,7 @@
 			#{updatedAt}
 		)
 	</insert>
-	<!-- Count Member -->
+	<!-- Count Site -->
 	<select id="AdminCountSite" resultType="int">
 		SELECT COUNT(id) 
 		FROM sites 
@@ -51,5 +51,22 @@
 			sites 
 		ORDER BY id DESC 
 		LIMIT 10 OFFSET #{page}
+	</select>
+	<!-- Delete Site -->
+	<delete id="AdminDeleteSite" parameterType="map">
+	
+	</delete>
+	
+	<!-- Detail Site -->
+	<select id="AdminDetailSite" parameterType="site" resultType="site">
+		SELECT 
+			id, 
+			name, 
+			Owner, 
+			createdAt, 
+			updatedAt 
+		FROM 
+			sites 
+		WHERE id=#{id}
 	</select>
 </mapper>

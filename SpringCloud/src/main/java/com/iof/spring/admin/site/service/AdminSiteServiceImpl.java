@@ -21,7 +21,7 @@ public class AdminSiteServiceImpl implements AdminSiteService {
 	public int CreateSite(SiteVO site) {
 		// TODO Auto-generated method stub
 		System.out.println("Admin Site Create Service");
-		return 0;
+		return dao.CreateSite(site);
 	}
 
 	@Override
@@ -32,12 +32,18 @@ public class AdminSiteServiceImpl implements AdminSiteService {
 	}
 	
 	@Override
-	public JoinSiteVO DetailSite(SiteVO site) {
+	public SiteVO DetailSite(SiteVO site) {
 		// TODO Auto-generated method stub
 		System.out.println("Admin Site Detail Service");
-		return null;
+		return dao.AdminSiteDetail(site);
 	}
-	
+
+	@Override
+	public int DeleteSite(SiteVO site) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 
 	@Override
 	public int CountSite() {
