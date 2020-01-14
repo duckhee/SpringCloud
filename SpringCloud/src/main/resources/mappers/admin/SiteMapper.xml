@@ -2,7 +2,25 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
+<!-- 
+CREATE TABLE IF NOT EXISTS `cloud_database_development`.`sites` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(255) NOT NULL,
+  `Owner` VARCHAR(255) NOT NULL,
+  `createdAt` DATETIME NOT NULL,
+  `updatedAt` DATETIME NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `Owner` (`Owner` ASC) VISIBLE,
+  CONSTRAINT `sites_ibfk_1`
+    FOREIGN KEY (`Owner`)
+    REFERENCES `cloud_database_development`.`users` (`UserEmail`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 4
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+ -->  
 <mapper namespace="com.iof.spring.admin.Mapper.site">
 	<!-- result Join Plots -->
 	<resultMap type="joinPlot" id="JoinPlotResult">
