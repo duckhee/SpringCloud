@@ -32,6 +32,13 @@ public class AdminSiteDaoImpl implements AdminSiteDao{
 	}
 
 	@Override
+	public int AdminCountSite() {
+		// TODO Auto-generated method stub
+		System.out.println("Admin Site All Count Number Dao");
+		return session.selectOne("AdminCountSite");
+	}
+
+	@Override
 	public List<SiteVO> AdminPagingSite(int page){
 		// TODO Auto-generated method stub
 		System.out.println("Admin Site List Dao");
@@ -54,6 +61,7 @@ public class AdminSiteDaoImpl implements AdminSiteDao{
 		
 		return null;
 	}
+
 	
 	
 }

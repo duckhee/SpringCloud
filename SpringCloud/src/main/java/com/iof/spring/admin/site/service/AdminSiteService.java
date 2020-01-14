@@ -2,6 +2,7 @@ package com.iof.spring.admin.site.service;
 
 import java.util.List;
 
+import com.iof.spring.site.model.VO.JoinSiteVO;
 import com.iof.spring.site.model.VO.SiteVO;
 
 public interface AdminSiteService {
@@ -9,6 +10,8 @@ public interface AdminSiteService {
 	public int CreateSite(SiteVO site);
 	/** Admin Update Site */
 	public int UpdateSite(SiteVO site);
+	/** Admin Detail Site */
+	public JoinSiteVO DetailSite(SiteVO site);
 	/** Admin Delete Site */
 	
 	/** Admin List Site */

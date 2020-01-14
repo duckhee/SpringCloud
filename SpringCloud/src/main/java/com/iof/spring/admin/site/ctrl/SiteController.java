@@ -74,6 +74,12 @@ public class SiteController {
 	public String SiteEditPage(Model model, HttpServletRequest request) {
 		System.out.println("Admin Site Edit Page");
 		/** Get Parameter Site Id */
+		String _GetSiteId = request.getParameter("id");
+		System.out.println("Get Parameter Site Id : " + _GetSiteId);
+		if(_GetSiteId == null) {
+			System.out.println("Get Not Site Parameter");
+			return "redirect:/admin/Sites/list";
+		}
 		return "Admin/Site/EditPage";
 	}
 	
@@ -88,6 +94,7 @@ public class SiteController {
 		/** Get Parameter Site Id */
 		String _GetSiteId = request.getParameter("id");
 		System.out.println("Get Parameter Site Id : " + _GetSiteId);
+		
 		return "redirect:/Sites/list";
 	}
 	
@@ -100,9 +107,16 @@ public class SiteController {
 	@RequestMapping(value="/detail", method=RequestMethod.GET)
 	public String SiteDetailPage(Model model, HttpServletRequest request) {
 		System.out.println("Admin Site Detail Page");
+		/** Get Parameter Site Id */
+		String _GetSiteId = request.getParameter("id");
+		System.out.println("Get Parameter Site Id : " + _GetSiteId);
+		if(_GetSiteId == null) {
+			System.out.println("Get Not Site Parameter");
+			return "redirect:/admin/Sites/list";
+		}
 		return "/Admin/Site/DetailPage";
 	}
-	
+
 	/**
 	 * Site List Page
 	 * @param model

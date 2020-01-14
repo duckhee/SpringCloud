@@ -34,6 +34,11 @@
 			#{updatedAt}
 		)
 	</insert>
+	<!-- Count Member -->
+	<select id="AdminCountSite" resultType="int">
+		SELECT COUNT(id) 
+		FROM sites 
+	</select>
 	<!-- Paging Site -->
 	<select id="AdminPagingSite" parameterType="map" resultType="site">
 		SELECT 

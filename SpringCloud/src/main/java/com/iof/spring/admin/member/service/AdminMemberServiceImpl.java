@@ -86,6 +86,7 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 		}
 		int ListNumber = 10;
 		int TotalPage = 0;
+		/** Get All Page Number */
 		if(totalCountMember % ListNumber == 0) {
 			TotalPage = totalCountMember / ListNumber;
 		}else {

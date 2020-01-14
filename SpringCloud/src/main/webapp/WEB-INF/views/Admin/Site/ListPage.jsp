@@ -234,7 +234,7 @@
                 					<c:forEach items="${ SiteList }" var="Site">
                 						<tr>
                 							<td><input type="checkbox" name="checkRow" value="${ Site.getId() }"></td>
-                							<td>${Site.getName()}</td>
+                							<td><a href="<c:url value='/admin/Sites/detail?id='/>${Site.getId()}">${Site.getName()}</a></td>
                 							<td>${Site.getOwner()}</td>
                 							<td></td>
                 							<td>${Site.getCreatedAt()}</td>

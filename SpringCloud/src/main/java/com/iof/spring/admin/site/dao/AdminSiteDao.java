@@ -13,6 +13,9 @@ public interface AdminSiteDao {
 	/** Admin List Site Data Access Object */
 	public List<SiteVO> AdminListSite();
 	
+	/** Admin Count All Site Number Data Access Object */
+	public int AdminCountSite();
+	
 	/** Admin Paging Site Data Access Object */
 	public List<SiteVO> AdminPagingSite(int page);
 	
