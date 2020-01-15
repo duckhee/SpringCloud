@@ -1,6 +1,6 @@
 package com.iof.spring.admin.member.ctrl;
 
-
+	
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -98,6 +97,7 @@ public class AdminMemberController {
 		String UserEmail = req.getParameter("UserEmail");
 		String UserName = req.getParameter("UserName");
 		String UserPassword = req.getParameter("UserPassword");
+		
 		/** Get Session Check User Level */
 		
 		/** Annotation Not Compile error

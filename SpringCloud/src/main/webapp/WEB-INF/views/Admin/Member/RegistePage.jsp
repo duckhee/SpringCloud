@@ -114,6 +114,8 @@
         			<!-- ./user-panel -->
         			<!-- search form -->
         			<form action="#" method="get" class="sidebar-form">
+        				<!-- _csrf -->
+        				<input type="hidden" name="${_csrf.parameterName }"value="${_csrf.token }">
         				<div class="input-group">
         					<input type="text" name="search" class="form-control" placeholder="Search..."/>
         					<span class="input-group-btn">
@@ -207,7 +209,7 @@
                 		<div class="register-box-body">
                 			<p class="login-box-msg">Registe New Member</p>
                 			<form name="create" id="create" action="" method="">
-                				<input type="hidden" id="_csrf" name="_csrf" value="">
+                				<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
                 				<!-- ./csrf -->
                 				<div class="form-group has-feedback">
                 					<div class="input-group">
@@ -307,13 +309,15 @@
 		console.log("Email Check Btn");
 		$("#EmailCheckBtn").click(function(){
 			console.log("Email Check Btn");
-			let CheckEmail = $("#UserEmail").val();
-			console.log("Input Value : ", CheckEmail)
+			let CheckEmail = $("#UserEmail").val();			
 			$.ajax({
 				url:"<c:url value='/admin/Members/checkEmail'/>",
 				type:'POST',
 				dataType:'json',
 				contentType:'application/json',
+				beforeSend:function(xhr){
+					xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token }")
+				},
 				data:JSON.stringify({
 					Email:CheckEmail
 				}),

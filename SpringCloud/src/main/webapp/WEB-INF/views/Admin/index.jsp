@@ -199,6 +199,7 @@
 		<!-- ./left side bar -->
 		<div class="content-wrapper">
         		<div class="content">
+        			${_csrf.getClass() } <br>
                 TEST CSRF : ${_csrf.parameterName }<br>
                 TEST CSRF : ${_csrf.token }
             </div>
