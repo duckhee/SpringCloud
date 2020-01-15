@@ -3,6 +3,8 @@ package com.iof.spring.plot.model.VO;
 import java.util.Date;
 import java.util.List;
 
+import com.iof.spring.device.model.VO.JoinDeviceVO;
+
 public class JoinPlotVO {
 	
 	private int id;
@@ -11,7 +13,7 @@ public class JoinPlotVO {
 	private int SiteIdx;
 	private Date createdAt;
 	private Date updatedAt;
-	//private List<JoinDeviceVO> device; 
+	private List<JoinDeviceVO> device; 
 	
 	public JoinPlotVO() {
 		super();
