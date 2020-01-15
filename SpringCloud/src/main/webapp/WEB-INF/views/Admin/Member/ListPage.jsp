@@ -430,7 +430,29 @@
 					showCancelButton:true
 				}).then(result=>{
 					if(result.value){
+						let _DeleteAJax = JSON.stringify({
+							
+						});
 						console.log("Check Confirm Done(Delete)");
+						$.ajax({
+							url:'<c:url value="/admin/Members/delete"/>',
+							type:'post',
+							dataType:'json',
+							contentType:'application/json',
+							beforeSend:function(xhr){
+								xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}")
+							},
+							data:_DeleteAJax,
+							success:function(data){
+								Swal.fire({
+									type:'success',
+									title:"Delete Member Success"
+								});
+							},
+							error:function(request, status, error){
+								console.log("DELETE MEMBER ERROR");
+							}
+						});
 						return true;
 					}
 					console.log("Check Confirm Done(Not Delete)");
