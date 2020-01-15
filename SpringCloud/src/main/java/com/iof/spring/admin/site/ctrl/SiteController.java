@@ -174,6 +174,11 @@ public class SiteController {
 		return "Admin/Site/ListPage";
 	}
 	
+	/**
+	 * Delete Do and ReLoad Paging Data
+	 * @param _ReloadSiteParameter
+	 * @return
+	 */
 	@RequestMapping(value="/realodList", method=RequestMethod.POST)
 	@ResponseBody
 	public List<SiteVO> ReloadList(@RequestBody Map<String, Object> _ReloadSiteParameter){
@@ -187,9 +192,15 @@ public class SiteController {
 		return _ReloadList;
 	}
 	
+	/**
+	 * Delete Site
+	 * @param Delete Map<String, Object>
+	 * @param HttpSession 
+	 * @return
+	 */
 	@RequestMapping(value="/delete", method=RequestMethod.POST)
 	@ResponseBody
-	public String SiteDeleteDo(@RequestBody Map<String, Object> Delete) {
+	public String SiteDeleteDo(@RequestBody Map<String, Object> Delete, HttpSession sesion) {
 		System.out.println("Admin Site Delete Do");
 		return "redirect:/admin/Site/list";
 	}

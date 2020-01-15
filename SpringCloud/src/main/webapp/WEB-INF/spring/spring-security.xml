@@ -6,13 +6,24 @@
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/security
     http://www.springframework.org/schema/security/spring-security.xsd">
-       
+    <!-- Password Crypto Security -->
     <beans:bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
-    <!-- CSRF Setting -->
-    <!--   
- 	<http use-expressions="true">
- 		<intercept-url pattern="/**/admin/" requires-channel="http"/>
- 		<csrf disabled="false"/>
- 	</http>
- 	 -->
+    <!-- Password CSRF Security -->
+    <beans:bean id="tokenRepository" class="org.springframework.security.web.csrf.CookieCsrfTokenRepository"/>
+    <!--  Not Use Security -->
+    <http pattern="/resources/**" security="none"/>
+    <!-- 스프링시큐리티 표현식 사용 여부 -->
+    <http auto-config="true" use-expressions="true" >
+    		<intercept-url pattern="/admin/**"/>
+    		<http-basic/>
+    		<headers>
+    			<xss-protection/>
+    		</headers>
+    		<csrf/>
+    </http>
+	<authentication-manager>
+		<authentication-provider>
+			<jdbc-user-service data-source-ref="dataSource"/>
+		</authentication-provider>
+	</authentication-manager>
 </beans:beans>

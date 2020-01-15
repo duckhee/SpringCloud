@@ -39,6 +39,7 @@ public class AdminUserController {
 	@RequestMapping(value="/")
 	public String UserMain() {
 		System.out.println("Admin User Main");
+		
 		return "redirect:/admin/Users/Login";
 	}
 	
