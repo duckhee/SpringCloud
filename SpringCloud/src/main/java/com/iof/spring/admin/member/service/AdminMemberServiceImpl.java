@@ -161,7 +161,10 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 		/** Delete Success Get Paging Member */		
 		_GetMemberList = dao.PagingMember((int)user.get("page"));
 		if(_GetMemberList == null) {
+			_ReturnValue.put("msgFlag", false);
 			_ReturnValue.put("msg", "not have PagingList");
+		}else {
+			_ReturnValue.put("msgFlag", true);
 		}
 		_ReturnValue.put("reload", _GetMemberList);
 		

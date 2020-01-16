@@ -397,8 +397,19 @@
 	}
 	
 	/** Function Delete User done Reloading Member List */
-	function ReloadingTable(){
-		$("MemberList-Body").empty();
+	function ReloadingTable(data){
+		$("#MemberList-Body").empty();
+		let txt = "";
+		$.each(data.reload, function(idx, obj){
+			txt += "<tr><td><input type='checkbox' name='checkRow' value="+obj.id+"></td>";
+			txt += "<td><a href=<c:url value='/admin/Members/detail?id='/>"+obj.id+">"+obj.userEmail+"</td>";
+			txt += "<td>"+obj.userName+"</td>";
+			txt += "<td>"+obj.userLevel+"</td>";
+			txt += "<td>"+new Date(obj.createdAt).getFullYear() + '-' + (new Date(obj.createdAt).getMonth()+1) + '-' + new Date(obj.createdAt).getDate()+":"+new Date(obj.createdAt).getHours()+":"+new Date(obj.createdAt).getMinutes()+"</td>";
+			txt += "<td>"+obj.updatedAt+"</td></tr>";
+		});
+		$("#AllClickBtn").prop("checked", false);
+		$("#MemberList-Body").append(txt);
 	};
 		
 	/** Function Delete User */
@@ -431,7 +442,7 @@
 				}).then(result=>{
 					if(result.value){
 						let _DeleteAJax = JSON.stringify({
-							page:1,
+							page:0,
 							deleteId:_DeleteUser
 						});
 						console.log("Check Confirm Done(Delete)");
@@ -445,15 +456,16 @@
 							},
 							data:_DeleteAJax,
 							success:function(data){
-								console.log("Get Reload Data : ", data);
 								if(data.msgFlag){									
 									Swal.fire({
 										type:'success',
 										title:"Delete Member Success"
 									});
 									/** Reloading Table */
-									return ;
+									
+									return ReloadingTable(data);
 								}else{
+									console.log("Failed");
 									return Swal.fire({
 										type:'warning',
 										title: data.msg
