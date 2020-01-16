@@ -79,7 +79,8 @@ public class AdminUserController {
 		/** Login Info Save Session */
 		//HttpSession session;
 		Map<String, Object> _LoginSession = new HashMap<String, Object>();
-		
+		String referer = request.getHeader("Referer");
+		System.out.println("Test Redirect Previous Page : " + referer);
 		/** Login After Do */
 		if(_login == null) {
 			return "redirect:/admin/Users/Login";
@@ -140,8 +141,18 @@ public class AdminUserController {
 	 * @return
 	 */
 	@RequestMapping(value="/Profile", method=RequestMethod.GET)
-	public String UserProfilePage(Model model) {
+	public String UserProfilePage(Model model, HttpServletRequest request) {
 		System.out.println("Admin User Profile Page");
+		/** Get User Profile Id */
+		String _Getid = request.getParameter("id");
+		int _Id;
+		try {
+			_Id = Integer.parseInt(_Getid);
+		}catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Not Integer Type Parameter");
+			return "redirect:/admin/";
+		}
 		return "Admin/User/ProfilePage";
 	}
 	

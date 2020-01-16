@@ -26,4 +26,18 @@
 			<jdbc-user-service data-source-ref="dataSource"/>
 		</authentication-provider>
 	</authentication-manager>
+	
+	
+    	<!-- After login, return to the last visited page -->
+    <!-- 	
+	<beans:bean id="authenticationSuccessHandler" class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
+    	<beans:property name="useReferer" value="true" />
+	</beans:bean>
+	 -->
+    	<!-- After login, stay to the same page -->
+    <!-- 	
+	<beans:bean id="authenticationSuccessHandlerWithoutReferer" class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
+    	<beans:property name="useReferer" value="false" />
+	</beans:bean>
+	 -->
 </beans:beans>
