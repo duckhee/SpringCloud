@@ -67,7 +67,7 @@ public class AdminMemberDaoImpl implements AdminMemberDao {
 	 * Get Member Delete
 	 */
 	@Override
-	public int DeleteMember(UserVO user) {
+	public int DeleteMember(Map<String, Object> user) {
 		// TODO Auto-generated method stub
 		System.out.println("Admin Member Delete Dao");
 		return session.delete("AdminDeleteMember", user);

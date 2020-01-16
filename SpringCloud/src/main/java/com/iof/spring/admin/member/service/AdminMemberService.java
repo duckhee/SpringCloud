@@ -1,6 +1,7 @@
 package com.iof.spring.admin.member.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.iof.spring.user.model.VO.JoinUserVO;
 import com.iof.spring.user.model.VO.UserVO;
@@ -25,6 +26,6 @@ public interface AdminMemberService {
 	public UserVO UpdateMember(UserVO user);	
 	
 	/** Member Delete */
-	public int DeleteMember(UserVO user);
+	public Map<String, Object> DeleteMember(Map<String, Object> user);
 
 }

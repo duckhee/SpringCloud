@@ -416,12 +416,12 @@
 				_DeleteUserName.push($(this).parent('td').next().html());
 			});
 			/** Not Check Value */
-			if(_DeleteUser.length == 0){
+	 		if(_DeleteUser.length == 0){
 				return Swal.fire({
 					type:'warning',
 					title:'Check Delete User First'
 				});
-			}else{
+			}else{ 
 				/** Delete User */
 				Swal.fire({
 					title:'Are you sure Delete User ?',
@@ -431,7 +431,8 @@
 				}).then(result=>{
 					if(result.value){
 						let _DeleteAJax = JSON.stringify({
-							
+							page:1,
+							deleteId:_DeleteUser
 						});
 						console.log("Check Confirm Done(Delete)");
 						$.ajax({
@@ -444,13 +445,23 @@
 							},
 							data:_DeleteAJax,
 							success:function(data){
-								Swal.fire({
-									type:'success',
-									title:"Delete Member Success"
-								});
+								console.log("Get Reload Data : ", data);
+								if(data.msgFlag){									
+									Swal.fire({
+										type:'success',
+										title:"Delete Member Success"
+									});
+									/** Reloading Table */
+									return ;
+								}else{
+									return Swal.fire({
+										type:'warning',
+										title: data.msg
+									});
+								}
 							},
 							error:function(request, status, error){
-								console.log("DELETE MEMBER ERROR");
+								return console.log("DELETE MEMBER ERROR");
 							}
 						});
 						return true;
@@ -458,7 +469,7 @@
 					console.log("Check Confirm Done(Not Delete)");
 					return false;
 				});
-			}
+			 } 
 		});
 	}
 	

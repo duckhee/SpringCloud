@@ -147,10 +147,13 @@ ENGINE = InnoDB;
 		WHERE id=#{id}
 	</update>
 	
-	<!-- Delete Member -->
-	<delete id="AdminDeleteMember" parameterType="user">
+	<!-- Delete Member List -->
+	<delete id="AdminDeleteMember" parameterType="map">
 		DELETE FROM users 
-		WHERE UserEmail=#{UserEmail}
+		WHERE id IN
+		<foreach collection="deleteId" item="item" open="(" close=");" separator=", ">
+			#{item}
+		</foreach>
 	</delete>
 	
 	<!-- Count Member -->

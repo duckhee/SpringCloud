@@ -1,8 +1,12 @@
 package com.iof.spring.admin.member.service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -117,12 +121,51 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 		return null;
 	}
 
+	
+	
+	
 	@Override
-	public int DeleteMember(UserVO user) {
+	public Map<String, Object> DeleteMember(Map<String, Object> user) {
 		// TODO Auto-generated method stub
 		System.out.println("Admin Member Delete Service");
+		/** Return Map */
+		Map<String, Object> _ReturnValue = new HashMap<String, Object>();
+		/** Get Member */
+		List<UserVO> _GetMemberList = null;
+		/** Get Delete userId Parameter Length */
+		int _DeleteLength = -1;
+		System.out.println("delete ID : " + user.get("deleteId"));
+		try {
+			
+			_DeleteLength = ((ArrayList<Object>) user.get("deleteId")).size();
+		}catch (Exception e) {
+			// TODO: handle exception
+			_DeleteLength = -1;
+		}
+		/** Check Parameter */
+		if(_DeleteLength <= 0) {
+			System.out.println("parameter Not Input");
+			_ReturnValue.put("msgFlag", null);
+			_ReturnValue.put("msg", "Not Input Parameter");
+			return _ReturnValue;
+		}
+		/** Check Delete Flag */
 		int _DeleteFlag = dao.DeleteMember(user);
-		return _DeleteFlag;
+		System.out.println("Delete Flag : " + _DeleteFlag);
+		if(_DeleteFlag == 0) {
+			System.out.println("Delete Failed");
+			_ReturnValue.put("msgFlag", null);
+			_ReturnValue.put("msg", "Delete Failed");
+			return _ReturnValue;
+		}
+		/** Delete Success Get Paging Member */		
+		_GetMemberList = dao.PagingMember((int)user.get("page"));
+		if(_GetMemberList == null) {
+			_ReturnValue.put("msg", "not have PagingList");
+		}
+		_ReturnValue.put("reload", _GetMemberList);
+		
+		return _ReturnValue;
 	}
 
 

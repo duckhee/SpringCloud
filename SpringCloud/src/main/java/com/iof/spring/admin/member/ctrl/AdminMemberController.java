@@ -314,25 +314,33 @@ public class AdminMemberController {
 	@RequestMapping(value="/delete", method=RequestMethod.POST)
 	/** Response Body Value */
 	@ResponseBody
-	public List<UserVO> AdminMemberDeleteDo(@RequestBody Map<String, Object> _Delete) {
+	public Map<String, Object> AdminMemberDeleteDo(@RequestBody Map<String, Object> _Delete) {
 		System.out.println("Admin Member Ctrl Delete Do");
-		System.out.println("Delete Number : " + _Delete);
 		/** Return List Value */
-		List<UserVO> _ReturnList = new ArrayList<UserVO>();
+		Map<String, Object> _ReturnJson = null;
 		if(_Delete == null) {
 			System.out.println("Delete User Not Select");
-			_ReturnList = null;
-			return _ReturnList;
+			_ReturnJson = null;
+			return _ReturnJson;
 		}
+		//TODO Delete Function
+		System.out.println("Delete Number : " + _Delete);
+		System.out.println("Delete Member id : " + _Delete.get("deleteId"));
+		
 		/** Get Page Number */
 		int Page;
 		try {
-			Page = Integer.parseInt((String)_Delete.get("page"));
-		}catch(NumberFormatException e) {
+			Page = (int) _Delete.get("page");
+			System.out.println("Page : " + Page);
+		}catch(Exception e) {
+			System.out.println("Change Integer type Error : ");
+			e.printStackTrace();
 			Page = 0;
 		}
-		_ReturnList = service.PagingMember(Page);
-		return _ReturnList;
+		/** Delete and Reload List Value */
+		_ReturnJson = service.DeleteMember(_Delete);
+		System.out.println("Get Service Value : " + _ReturnJson);
+		return _ReturnJson;
 	}
 	
 }

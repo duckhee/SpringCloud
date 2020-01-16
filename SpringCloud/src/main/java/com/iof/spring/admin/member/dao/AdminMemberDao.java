@@ -17,7 +17,7 @@ public interface AdminMemberDao {
 	//public List<JoinUserVO> DetailMember(UserVO user);
 	public JoinUserVO DetailMember(UserVO user);
 	/** Member Delete */
-	public int DeleteMember(UserVO user);
+	public int DeleteMember(Map<String, Object> user);
 	/** Count Member Number */
 	public int CountMember();
 	/** Paging Maker Member Use Offset */
