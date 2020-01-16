@@ -102,6 +102,7 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 		page = page - 1;
 		System.out.println("Page : " + page);
 		List<UserVO> MemberPagingList = dao.PagingMember(page);
+		
 		return MemberPagingList;
 	}
 
@@ -124,6 +125,7 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 	
 	
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public Map<String, Object> DeleteMember(Map<String, Object> user) {
 		// TODO Auto-generated method stub
@@ -136,7 +138,6 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 		int _DeleteLength = -1;
 		System.out.println("delete ID : " + user.get("deleteId"));
 		try {
-			
 			_DeleteLength = ((ArrayList<Object>) user.get("deleteId")).size();
 		}catch (Exception e) {
 			// TODO: handle exception
@@ -158,11 +159,20 @@ public class AdminMemberServiceImpl implements AdminMemberService {
 			_ReturnValue.put("msg", "Delete Failed");
 			return _ReturnValue;
 		}
+		/** Get Page Number */
+		int Page;
+		try {
+			Page = (int)user.get("page");
+			System.out.println("Page : " + Page);
+		}catch(Exception e) {
+			System.out.println("Change Integer type Error : " + user.get("page"));
+			Page = 0;
+		}
 		/** Delete Success Get Paging Member */		
 		_GetMemberList = dao.PagingMember((int)user.get("page"));
 		if(_GetMemberList == null) {
 			_ReturnValue.put("msgFlag", false);
-			_ReturnValue.put("msg", "not have PagingList");
+			_ReturnValue.put("msg", "not have Value");
 		}else {
 			_ReturnValue.put("msgFlag", true);
 		}

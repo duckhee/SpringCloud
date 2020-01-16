@@ -160,7 +160,7 @@ public class AdminMemberController {
 			try {
 				/** Page Make Integer Type Change */
 				page = Integer.parseInt(GetPage);				
-			}catch(NumberFormatException e) {
+			}catch(Exception e) {
 				System.out.println("Input not Number");
 				page = 0;
 			}
@@ -326,17 +326,7 @@ public class AdminMemberController {
 		//TODO Delete Function
 		System.out.println("Delete Number : " + _Delete);
 		System.out.println("Delete Member id : " + _Delete.get("deleteId"));
-		
-		/** Get Page Number */
-		int Page;
-		try {
-			Page = (int) _Delete.get("page");
-			System.out.println("Page : " + Page);
-		}catch(Exception e) {
-			System.out.println("Change Integer type Error : ");
-			e.printStackTrace();
-			Page = 0;
-		}
+
 		/** Delete and Reload List Value */
 		_ReturnJson = service.DeleteMember(_Delete);
 		System.out.println("Get Service Value : " + _ReturnJson);
