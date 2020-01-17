@@ -24,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.iof.spring.admin.member.service.AdminMemberService;
 import com.iof.spring.user.model.VO.JoinUserVO;
 import com.iof.spring.user.model.VO.UserVO;
+import com.iof.spring.util.PageMaker;
 import com.iof.spring.util.ValidUtil;
 
 /**
@@ -37,6 +38,9 @@ public class AdminMemberController {
 
 	@Autowired
 	private AdminMemberService service;
+	
+	
+	
 	
 	/**
 	 * Member Registe Page

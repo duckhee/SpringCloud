@@ -76,6 +76,7 @@
                 						<!-- ./Profile -->
                 						<div class="pull-right">
                 							<form name="logout" id="logout" method="" action="">
+                								<input type="hidden" name="${_csrf.parameterName }"value="${_csrf.token }">
                 								<button type="button" id="LogOutBtn" class="btn btn-default btn-flat">Sign Out</button>
                 							</form>
                 						</div>
