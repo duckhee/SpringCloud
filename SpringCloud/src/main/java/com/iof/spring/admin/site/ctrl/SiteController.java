@@ -58,6 +58,7 @@ public class SiteController {
 		System.out.println("Admin Site Create Do");
 		/** Make Site Value Object */
 		SiteVO _Site = new SiteVO();
+		/** Show Session */
 		/** Get Parameter Site Owner and Site Name */
 		String _SiteName = "";
 		String _SiteOwner = "";
