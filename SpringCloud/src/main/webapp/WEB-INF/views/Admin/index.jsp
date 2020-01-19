@@ -251,14 +251,16 @@
 	<!-- AdminLTE for demo purposes -->
 	<script src="<c:url value='/resources/Admin/dist/js/demo.js'/>"></script>
 	<script src="<c:url value='/resources/Admin/dist/js/app.min.js'/>"></script>
+	<script src="<c:url value='/resources/Admin/js/Default/AdminIndex.js'/>"></script>
 	<script>
+	LogOutTest(document.getElementById("LogOutBtn"));
 	/** Function Log Out */
 	function LogOutDo(){
 		$("#LogOutBtn").click(function(){
 			console.log("Log Out Btn Click");
 			document.logout.method = "POST";
 			document.logout.action="<c:url value='/admin/Users/LogOut'/>";
-			document.logout.submit();
+			
 		});
 	}
 	$(function(){
