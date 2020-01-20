@@ -194,6 +194,18 @@ public class AdminMemberController {
 	}
 	
 	/**
+	 * 
+	 * @param _SearchAllData
+	 * @return
+	 */
+	@RequestMapping(value="/DetailMemberCheck", method=RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> AdminDetailMemberJson(@RequestBody Map<String, Object> _SearchAllData){
+		System.out.println("Admin Member Detail Site, Plot, Device Return Json");
+		Map<String, Object> _ReturnJson = null;
+		return _ReturnJson;
+	}
+	/**
 	 * Member Detail page
 	 * @param request 
 	 * @return ModelAndView

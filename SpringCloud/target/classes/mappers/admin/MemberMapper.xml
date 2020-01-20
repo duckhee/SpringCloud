@@ -19,16 +19,28 @@ ENGINE = InnoDB;
 	<!-- Member Have All Result -->
 	<!-- Site  -->
 	<resultMap type="joinSite" id="JoinSiteResult">
-		<result column="name" property="name"/>
-		<result column="createdAt" property="createdAt"/>
+		<id column="SiteId" property="id"/>
+		<result column="SiteName" property="name"/>
+		<result column="SiteCreatedAt" property="createdAt"/>
+		<result column="SiteCreatedAt" property="createdAt"/>
 	</resultMap>
 	
 	<!-- Plot -->
 	<resultMap type="joinPlot" id="JoinPlotResult">
-		
+		<id column="PlotId" property="id"/>
+		<result column="PlotName" property="name"/>
+		<result column="PlotCreatedAt" property="createdAt"/>
+		<result column="PlotCreatedAt" property="createdAt"/>
+	</resultMap>
+	<!-- Device -->
+	<resultMap type="joinDevice" id="JoinDeviceResult">
+		<id column="DeviceId" property="id"/>
+		<result column="DeviceName" property="name"/>
+		<result column="DeviceCreatedAt" property="createdAt"/>
+		<result column="DeviceCreatedAt" property="createdAt"/>
 	</resultMap>
 	<!--  Get All Data Use UserName Users, Sites, Plots, Devices,  -->
-	<resultMap type="joinUser" id="JoinUserPlotResult">
+	<resultMap type="joinUser" id="JoinAllUser">
 		<id column="id" property="id"/>
 		<result column="UserEmail" property="UserEmail"/>
 		<result column="UserName" property="UserName"/>
@@ -43,13 +55,33 @@ ENGINE = InnoDB;
 			<!-- Plot List -->
 			<collection property="joinPlot" javaType="java.util.List" ofType="joinPlot">
 				<id column="plotId" property="id"/>
-				<result column="plotPlotName" property="PlotName"/>
-				<result column="plotSiteIdx" property="SiteIdx"/>
+				<result column="plotName" property="PlotName"/>
 				<result column="plotCreatedAt" property="createdAt"/>
 				<result column="plotUpdatedAt" property="updatedAt"/>	
+				<collection property="joinDevice" javaType="java.util.list" ofType="joinDevice">
+					<id column="DeviceId" property="id"/>
+				</collection>
 			</collection>
 		</collection>
 	</resultMap>
+	<!-- Get All Info -->
+	<select id="AdminDetailAllMember" parameterType="user" resultMap="JoinAllUser">
+		SELECT 
+			user.id,
+			user.UserEmail,
+			user.UserName,
+			user.UserLevel,
+			user.createdAt,
+			user.updatedAt,
+			site.name as siteName,
+			site.createdAt AS siteCreatedAt,
+			site.updatedAt AS siteUpdatedAt,
+			plot.PlotName AS plotName,
+			plot.createdAt AS plotCreatedAt,
+			plot.updatedAt AS plotUpdatedAt
+		FROM 
+			users AS user
+	</select>
 	<!-- Return Map Setting Call resultMap -->
 	<!-- 1 : 다 관계의 경우 데이터 매핑시켜준다. 
 		association => 1 : 1 관계 
