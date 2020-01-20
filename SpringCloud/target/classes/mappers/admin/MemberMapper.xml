@@ -80,7 +80,8 @@ ENGINE = InnoDB;
 			plot.createdAt AS plotCreatedAt,
 			plot.updatedAt AS plotUpdatedAt
 		FROM 
-			users AS user
+			users AS user 
+		
 	</select>
 	<!-- Return Map Setting Call resultMap -->
 	<!-- 1 : 다 관계의 경우 데이터 매핑시켜준다. 
