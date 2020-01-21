@@ -87,7 +87,10 @@ ENGINE = InnoDB;
 			device.name AS deviceName 
 		FROM 
 			users AS user 
-		
+		LEFT JOIN
+			sites as site
+		ON
+			user.UserEmail=site.Owner
 	</select>
 	<!-- Return Map Setting Call resultMap -->
 	<!-- 1 : 다 관계의 경우 데이터 매핑시켜준다. 
