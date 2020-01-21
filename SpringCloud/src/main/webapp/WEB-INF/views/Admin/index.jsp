@@ -253,7 +253,7 @@
 	<script src="<c:url value='/resources/Admin/dist/js/app.min.js'/>"></script>
 	<script src="<c:url value='/resources/Admin/js/Default/AdminIndex.js'/>"></script>
 	<script>
-	LogOutTest(document.getElementById("LogOutBtn"));
+	//LogOutTest(document.getElementById("LogOutBtn"));
 	/** Function Log Out */
 	function LogOutDo(){
 		$("#LogOutBtn").click(function(){
