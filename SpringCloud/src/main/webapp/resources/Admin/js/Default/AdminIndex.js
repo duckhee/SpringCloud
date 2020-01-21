@@ -8,7 +8,7 @@ if (typeof jQuery === "undefined") {
 }
 
 function LogOutTest(_selector){
-	console.log("window Location : ", "<c:url value='/admin/'/>" );
+	
 	$("#"+_selector).click(function(){
 		console.log("Logout Btn Click");
 	})
