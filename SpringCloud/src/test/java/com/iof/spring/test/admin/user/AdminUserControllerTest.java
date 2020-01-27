@@ -19,8 +19,15 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.iof.spring.admin.user.ctrl.AdminUserController;
 
+/**
+ * https://github.com/spring-projects/spring-framework/blob/master/spring-webmvc/src/test/java/org/springframework/web/servlet/mvc/WebContentInterceptorTests.java
+ * 참조
+ * @author duckheewon
+ *
+ */
+
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring/**/root-context.xml"})
+@ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring/root-context.xml", "file:src/main/webapp/WEB-INF/spring/spring-security.xml", "file:src/main/webapp/WEB-INF/spring/ws-config.xml"})
 @FixMethodOrder(MethodSorters.JVM)
 public class AdminUserControllerTest {
 	
@@ -32,6 +39,9 @@ public class AdminUserControllerTest {
 	private AdminUserController _AdminUserController;
 	/** Test Object Not Tomcat Use Controller Test do*/
 	private MockMvc mockMvc;
+	
+	
+	
 	
 	/**
 	 * Setting MockMvs Test Setting
@@ -48,7 +58,7 @@ public class AdminUserControllerTest {
 	public void TestGetAdminRootPage(){
 		System.out.println("\r\n1. Admin Main Page Test Start");
 		try {
-			//this.mockMvc.perform(get("/admin/")).andExpect(status().isTemporaryRedirect());
+			this.mockMvc.perform(get("/admin/")).andExpect(status().isTemporaryRedirect());
 		}catch (Exception e) {
 			// TODO: handle exception
 			System.out.println("\r\n\r\nGet Admin Main Page Error :" + e.getStackTrace());
@@ -72,8 +82,22 @@ public class AdminUserControllerTest {
 		System.out.println("Admin Login Page Test End \r\n");
 	}
 	
+	@Test
+	public void TestAdminMemberListPage() {
+		System.out.println("\r\n3. Admin Member List Test Page Start");
+		
+		try {
+			this.mockMvc.perform(get("/admin/Members/list")).andExpect(status().isTemporaryRedirect());
+		}catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("\r\n\r\n Admin Member List Page Error : " + e.getStackTrace());
+		}
+	}
+	
 	@After
 	public void FinshUserController() {
 		System.out.println("\r\n\r\nAdminUserController Test End \r\n\r\n");
 	}
+	
+	
 }
