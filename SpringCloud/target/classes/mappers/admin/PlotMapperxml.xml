@@ -28,7 +28,7 @@ COLLATE = utf8mb4_0900_ai_ci;
  -->  
 <mapper namespace="com.iof.spring.admin.Mapper.plot">
 	<!-- Insert Plots -->
-	<insert id="" parameterType="">
+	<insert id="AdmincreatePlot" parameterType="plot">
 		INSERT INTO 
 		plots (
 				id, 
@@ -48,7 +48,7 @@ COLLATE = utf8mb4_0900_ai_ci;
 		)
 	</insert>
 	<!-- Detail Plots -->
-	<select id="" parameterMap="" resultType="">
+	<select id="AdminDetailPlot" parameterMap="plot" resultType="plot">
 	</select>
 	<!-- Update Plots -->
 	<update id="">

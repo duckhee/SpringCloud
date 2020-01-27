@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.iof.spring.device.model.VO.JoinDeviceVO;
 
+
 public class JoinPlotVO {
 	
 	private int id;
