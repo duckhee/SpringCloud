@@ -149,8 +149,38 @@
 				}
 			});
 		}
+		
+		/** Enter key LogIn Do */
+		function EnterKey(){
+			$("#UserPassword").keyup(function(e){
+				if(e.keyCode == 13){
+					console.log("Enter KEY");
+					let Email = $("#UserEmail").val();
+					let EmailFlag = false;
+					let PassFlag = false;
+					if(EmailCheck()){
+						EmailFlag = true;
+					}else{
+						EmailFlag = false;
+					}
+					
+					if(PasswordCheck()){
+						PassFlag = true;
+					}else{
+						PassFlag = false;
+					}
+					if(EmailFlag == true && PassFlag == true){
+						console.log('Success');
+						document.LogIn.method="POST";
+						document.LogIn.action="<c:url value='/admin/Users/Login'/>";
+						document.LogIn.submit(); 
+					}
+				}
+			});
+		}
 		$(function(){
 			LoginDo();
+			EnterKey();
 		});
 	</script>
 </body>

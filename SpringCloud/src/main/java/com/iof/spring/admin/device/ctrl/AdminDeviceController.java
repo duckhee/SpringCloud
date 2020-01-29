@@ -1,9 +1,17 @@
 package com.iof.spring.admin.device.ctrl;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.iof.spring.admin.device.service.AdminDeviceService;
 
@@ -38,5 +46,27 @@ public class AdminDeviceController {
 		System.out.println("Admin Device Controller List Page");
 		return "Admin/Device/ListPage";
 	}
-
+	
+	 @RequestMapping(value="/delete", method=RequestMethod.POST)
+	 @ResponseBody
+	 public Map<String, Object> AdminDeviceDeleteDo(){
+		 Map<String, Object> _return = new HashMap<String, Object>();
+		 return _return;
+	 }
+	 
+	 @RequestMapping(value="/detail", method=RequestMethod.GET)
+	 public String AdminDeviceDetailPage(HttpServletRequest request, HttpSession session) {
+		 return "redirect:/";
+	 }
+	 
+	 
+	 @RequestMapping(value="/edit", method=RequestMethod.GET)
+	 public String AdminDeviceEditPage(Model model, HttpServletRequest request, HttpSession session) {
+		 return "redirect:/";
+	 }
+	 
+	 @RequestMapping(value="/edit", method=RequestMethod.POST)
+	 public String AdminDeviceEditDo(HttpServletRequest request, HttpSession session) {
+		 return "redirect:/";
+	 }
 }

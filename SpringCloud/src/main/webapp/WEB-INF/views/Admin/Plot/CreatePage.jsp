@@ -200,6 +200,13 @@
 			<!-- ./left side bar -->
 		<!-- ./left side bar -->
 		<div class="content-wrapper">
+			<div class="content-header">
+        			<ol class="breadcrumb">
+        				<li><i class="fa fa-folder" style="margin-right:5px;"></i>Plot</li>
+        				<li class="active">Create</li>
+        			</ol>
+        		</div>
+        		<!-- ./content-header -->
         		<div class="content">
         		   <!-- box start -->
                <div class='box' style="margin:10% auto; width:75%;">

@@ -260,7 +260,7 @@
 			console.log("Log Out Btn Click");
 			document.logout.method = "POST";
 			document.logout.action="<c:url value='/admin/Users/LogOut'/>";
-			
+			document.logout.submit();
 		});
 	}
 	$(function(){
