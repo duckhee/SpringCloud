@@ -239,6 +239,13 @@
                 					</div>
                 				</div>
                 				<!-- ./form-group -->
+                				<div class="form-group">
+                					<label for="" class="col-sm-2 control-label">Plot Name</label>
+                					<div class="col-sm-4">
+                						<input type="text" class='form-control' name='plotName' id='plotName' placeholder="Plot Name ...">
+                					</div>
+                				</div>
+                				<!-- ./form-group -->
                 			</form>
                 		</div>
                 		<!-- ./box-body -->

@@ -39,7 +39,7 @@ public class AdminUserController {
 	 * Go to Login Page Redirect
 	 * @return
 	 */
-	@RequestMapping(value="/")
+	@RequestMapping(value="")
 	public String UserMain(HttpSession session) {
 		System.out.println("Admin User Main");
 		System.out.println("User Info : " + session.getAttribute("user"));

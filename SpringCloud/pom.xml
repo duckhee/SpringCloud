@@ -184,7 +184,21 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
-			<version>3.2.3.RELEASE</version>
+			<version>4.0.6.RELEASE</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- Test Module -->
+		<dependency>
+    			<groupId>org.springframework.security</groupId>
+    			<artifactId>spring-security-test</artifactId>
+    			<version>4.2.1.RELEASE</version>
+    			<scope>test</scope>
+		</dependency>
+		<!-- Test Module -->
+		<dependency>
+			<groupId>com.jayway.jsonpath</groupId>
+			<artifactId>json-path</artifactId>
+			<version>0.9.1</version>
 			<scope>test</scope>
 		</dependency>
 		<!-- Test Module -->
