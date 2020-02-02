@@ -1,6 +1,7 @@
 package com.iof.spring.admin.site.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -11,6 +12,11 @@ import com.iof.spring.site.model.VO.JoinSiteVO;
 import com.iof.spring.site.model.VO.SiteVO;
 import com.iof.spring.user.model.VO.UserVO;
 
+/**
+ * Admin Site Delete Service
+ * @author duckheewon
+ *
+ */
 @Service("AdminSiteService")
 public class AdminSiteServiceImpl implements AdminSiteService {
 	
@@ -39,9 +45,10 @@ public class AdminSiteServiceImpl implements AdminSiteService {
 	}
 
 	@Override
-	public int DeleteSite(SiteVO site) {
+	public Map<String, Object> DeleteSite(Map<String, Object> site) {
 		// TODO Auto-generated method stub
-		return 0;
+		System.out.println("Admin Member Delete Service");
+		return null;
 	}
 
 

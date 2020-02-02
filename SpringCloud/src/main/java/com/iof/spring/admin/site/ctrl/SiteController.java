@@ -7,7 +7,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -58,6 +58,7 @@ public class SiteController {
 		System.out.println("Admin Site Create Do");
 		/** Make Site Value Object */
 		SiteVO _Site = new SiteVO();
+		/** Show Session */
 		/** Get Parameter Site Owner and Site Name */
 		String _SiteName = "";
 		String _SiteOwner = "";
@@ -92,6 +93,8 @@ public class SiteController {
 	@RequestMapping(value="/edit", method=RequestMethod.POST)
 	public String SiteEditDo(Model model, HttpServletRequest request) {
 		System.out.println("Admin Site Edit Do");
+		/** Get Previous Page Url Get */
+		String _pre = request.getHeader("Referer");
 		/** Get Parameter Site Id */
 		String _GetSiteId = request.getParameter("id");
 		System.out.println("Get Parameter Site Id : " + _GetSiteId);
@@ -200,9 +203,22 @@ public class SiteController {
 	 */
 	@RequestMapping(value="/delete", method=RequestMethod.POST)
 	@ResponseBody
-	public String SiteDeleteDo(@RequestBody Map<String, Object> Delete, HttpSession sesion) {
+	public Map<String, Object> SiteDeleteDo(@RequestBody Map<String, Object> Delete, HttpSession sesion) {
 		System.out.println("Admin Site Delete Do");
-		return "redirect:/admin/Site/list";
+		Map<String, Object> _ReturnJson = null;
+		/** Get Delete Info is Null */ 
+		if(Delete == null) {
+			System.out.println("Delete Site Not Select");
+			_ReturnJson = null;
+			return _ReturnJson;
+		}
+		//TODO Delete Function
+		System.out.println("Delete Number : " + Delete);
+		System.out.println("Delte Site ID : " + Delete.get("deleteId"));
+		
+		/** Delete Sites */
+		
+		return _ReturnJson;
 	}
 	
 	

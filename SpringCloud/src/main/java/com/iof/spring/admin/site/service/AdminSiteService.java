@@ -1,6 +1,7 @@
 package com.iof.spring.admin.site.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.iof.spring.site.model.VO.JoinSiteVO;
 import com.iof.spring.site.model.VO.SiteVO;
@@ -13,7 +14,7 @@ public interface AdminSiteService {
 	/** Admin Detail Site */
 	public SiteVO DetailSite(SiteVO site);
 	/** Admin Delete Site */
-	public int DeleteSite(SiteVO site);
+	public Map<String, Object> DeleteSite(Map<String, Object> site);
 	/** Admin List Site */
 	
 	/** Admin Count Site */

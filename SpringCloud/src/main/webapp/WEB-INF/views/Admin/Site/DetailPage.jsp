@@ -202,7 +202,7 @@
 				<h1>Site<small> Detail</small></h1>
 				<ol class="breadcrumb">
 					<li><i class="fa fa-inbox" style="margin-right:5px;"></i>Site</li>
-					<li class="active">list</li>
+					<li class="active">Detail</li>
 				</ol>
 			</div>
 			<!-- ./content-header -->

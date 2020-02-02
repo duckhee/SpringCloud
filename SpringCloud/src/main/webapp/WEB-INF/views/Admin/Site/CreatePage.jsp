@@ -76,7 +76,7 @@
                 						<!-- ./Profile -->
                 						<div class="pull-right">
                 							<form name="logout" id="logout" method="" action="">
-                								<button type="button" id="LogOutBtn" class="btn btn-default btn-flat">Sign Out</button>
+                								<button type="button" id="LogoutBtn" name="LogoutBtn" class="btn btn-default btn-flat">Sign Out</button>
                 							</form>
                 						</div>
                 						<!-- ./Log Out -->
@@ -225,7 +225,7 @@
                 					</div>
                 					<div class="col-sm-4">
                 						<input type="hidden" id="IdCheck">
-                						<button type="button" id="CheckOwnerBtn" class="btn btn-default btn-block">
+                						<button type="button" id="CheckUserBtn" class="btn btn-default btn-block">
                 							<i class="fa fa-fw fa-user" style="margin-right:10px;"></i>
                 							Email Check
                 						</button>
@@ -236,6 +236,13 @@
                 					<label for="" class="col-sm-2 control-label">Site Name</label>
                 					<div class="col-sm-4">
                 						<input type="text" class='form-control' name='siteName' id='siteName' placeholder="Site Name ...">
+                					</div>
+                				</div>
+                				<!-- ./form-group -->
+                				<div class="form-group">
+                					<label for="" class="col-sm-2 control-label">Plot Name</label>
+                					<div class="col-sm-4">
+                						<input type="text" class='form-control' name='plotName' id='plotName' placeholder="Plot Name ...">
                 					</div>
                 				</div>
                 				<!-- ./form-group -->
@@ -305,4 +312,46 @@
 	<!-- AdminLTE for demo purposes -->
 	<script src="<c:url value='/resources/Admin/dist/js/demo.js'/>"></script>
 	<script src="<c:url value='/resources/Admin/dist/js/app.min.js'/>"></script>
+	<script src="<c:url value='/resources/Admin/js/Default/AdminIndex.js'/>"></script>
+	<script>
+		/** Email regExp */
+		var regEmailExp = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+		/** Email checking */
+    		function validateEmail(email) {
+        		var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+        		return re.test(email);
+    		}
+		/** Function Check Owner Email */
+		function EmailCheck(){
+			let _Owner = $("#siteownerId").val();
+			console.log("Owner Value : ", _Owner);
+			if(!_Owner){
+				console.log("Value Null");
+				return null;
+			}
+			return _Owner;
+		}
+		/** Function Owner Check */
+		function _OwnerCheck(_select){
+
+			$("#"+_select).click(function(){
+				console.log("User Check Btn Click");
+				EmailCheck();
+			});
+			
+		}
+		/** Init Function */
+		function _Init(){
+			/** Owner check */
+			_OwnerCheck("CheckUserBtn");
+			/** Default */
+			LogOutTest("LogoutBtn");
+			
+		}
+		$(document).ready(function(){
+			
+			_Init();
+			
+		});
+	</script>
 </html>

@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 	<!-- jquery 2.2.3 -->
@@ -28,3 +27,14 @@
 	<!-- AdminLTE for demo purposes -->
 	<script src="<c:url value='/resources/Admin/dist/js/demo.js'/>"></script>
 	<script src="<c:url value='/resources/Admin/dist/js/app.min.js'/>"></script>
+	<script>
+		/** Logout Function */
+		function Logout(_select){
+			$("#"+_select).click(function(){
+				console.log("Logout Btn");
+				doucment.logout.method="POST";
+				document.logout.action="<c:url value='/admin/Users/LogOut'/>";
+				document.logout.submit();
+			});
+		}
+	</script>

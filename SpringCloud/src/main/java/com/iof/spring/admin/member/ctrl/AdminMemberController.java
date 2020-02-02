@@ -24,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.iof.spring.admin.member.service.AdminMemberService;
 import com.iof.spring.user.model.VO.JoinUserVO;
 import com.iof.spring.user.model.VO.UserVO;
+import com.iof.spring.util.PageMaker;
 import com.iof.spring.util.ValidUtil;
 
 /**
@@ -37,6 +38,9 @@ public class AdminMemberController {
 
 	@Autowired
 	private AdminMemberService service;
+	
+	
+	
 	
 	/**
 	 * Member Registe Page
@@ -189,6 +193,18 @@ public class AdminMemberController {
 		return _ReturnJson;
 	}
 	
+	/**
+	 * 
+	 * @param _SearchAllData
+	 * @return
+	 */
+	@RequestMapping(value="/DetailMemberCheck", method=RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> AdminDetailMemberJson(@RequestBody Map<String, Object> _SearchAllData){
+		System.out.println("Admin Member Detail Site, Plot, Device Return Json");
+		Map<String, Object> _ReturnJson = null;
+		return _ReturnJson;
+	}
 	/**
 	 * Member Detail page
 	 * @param request 

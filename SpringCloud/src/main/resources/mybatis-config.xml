@@ -10,10 +10,12 @@
  		<typeAlias type="com.iof.spring.user.model.VO.UserVO" alias ="user"/>
  		<typeAlias type="com.iof.spring.site.model.VO.SiteVO" alias="site"/>
  		<typeAlias type="com.iof.spring.plot.model.VO.PlotVO" alias="plot"/>
+ 		<typeAlias type="com.iof.spring.device.model.VO.DeviceVO" alias="device"/>
  		<!-- Join VO -->
  		<typeAlias type="com.iof.spring.user.model.VO.JoinUserVO" alias ="joinUser"/>
  		<typeAlias type="com.iof.spring.site.model.VO.JoinSiteVO" alias="joinSite"/>
  		<typeAlias type="com.iof.spring.plot.model.VO.JoinPlotVO" alias="joinPlot"/>
+ 		<typeAlias type="com.iof.spring.device.model.VO.JoinDeviceVO" alias="joinDevice"/>
  	</typeAliases>
  
  </configuration>

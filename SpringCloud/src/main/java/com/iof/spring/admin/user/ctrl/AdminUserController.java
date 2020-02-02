@@ -7,8 +7,11 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.http.HttpRequest;
+import org.apache.http.HttpResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,10 +39,10 @@ public class AdminUserController {
 	 * Go to Login Page Redirect
 	 * @return
 	 */
-	@RequestMapping(value="/")
-	public String UserMain() {
+	@RequestMapping(value="")
+	public String UserMain(HttpSession session) {
 		System.out.println("Admin User Main");
-		
+		System.out.println("User Info : " + session.getAttribute("user"));
 		return "redirect:/admin/Users/Login";
 	}
 	
@@ -59,8 +62,13 @@ public class AdminUserController {
 	 * @return
 	 */
 	@RequestMapping(value="/Login", method=RequestMethod.GET)
-	public String UserLogIn(Model model) {
+	public String UserLogIn(Model model, HttpServletRequest request, HttpSession session) {
 		System.out.println("Admin User Login Page");
+		/** Get Previous Page */
+		//String _Previous = request.getHeader("Referer");
+		//System.out.println("Get Referer : " + _Previous);
+		/** Set Previous page */
+		//request.getSession().setAttribute("PrevPage", _Previous);
 		return "Admin/User/LogInPage";
 	}
 	
@@ -76,14 +84,15 @@ public class AdminUserController {
 		/** Login Service */
 		UserVO _login = service.LoginUser(user);
 		System.out.println("Login Service Value : " + _login);
-		/** Login Info Save Session */
-		//HttpSession session;
+		/** Login Info Save Session Map */
 		Map<String, Object> _LoginSession = new HashMap<String, Object>();
-		
+		/** Get Previous Page */
+		//System.out.println("Previousr Page : " + request.getSession().getAttribute("PrevPage"));
 		/** Login After Do */
 		if(_login == null) {
 			return "redirect:/admin/Users/Login";
 		}else {
+			/** Login Session Save */
 			_LoginSession.put("UserEmail", _login.getUserEmail());
 			_LoginSession.put("UserName", _login.getUserName());
 			_LoginSession.put("UserLevel", _login.getUserLevel());

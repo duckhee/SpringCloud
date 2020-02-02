@@ -76,6 +76,7 @@
                 						<!-- ./Profile -->
                 						<div class="pull-right">
                 							<form name="logout" id="logout" method="" action="">
+                								<input type="hidden" name="${_csrf.parameterName }"value="${_csrf.token }">
                 								<button type="button" id="LogOutBtn" class="btn btn-default btn-flat">Sign Out</button>
                 							</form>
                 						</div>
@@ -250,7 +251,9 @@
 	<!-- AdminLTE for demo purposes -->
 	<script src="<c:url value='/resources/Admin/dist/js/demo.js'/>"></script>
 	<script src="<c:url value='/resources/Admin/dist/js/app.min.js'/>"></script>
+	<script src="<c:url value='/resources/Admin/js/Default/AdminIndex.js'/>"></script>
 	<script>
+	//LogOutTest(document.getElementById("LogOutBtn"));
 	/** Function Log Out */
 	function LogOutDo(){
 		$("#LogOutBtn").click(function(){

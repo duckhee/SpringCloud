@@ -31,6 +31,7 @@ public class AdminInterceptor extends HandlerInterceptorAdapter{
 		/** Get Base Content Path */
 		String _Base = request.getContextPath()+"";
 		if(session == null) {
+			System.out.println("Not Have Session");
 			/** Redirect Send Login Page */
 			response.sendRedirect(_Base + "/admin/Users/Login");
 			
@@ -43,6 +44,11 @@ public class AdminInterceptor extends HandlerInterceptorAdapter{
 			System.out.println("Not Login User");
 			response.sendRedirect(_Base + "/admin/Users/Login");
 			return false;
+		}
+		
+		System.out.println("Get Interceptor : " + _LoginSession);
+		if((int)_LoginSession.get("UserLevel") >= 5) {
+			System.out.println("Not Have permission");
 		}
 		return super.preHandle(request, response, handler);
 	}

@@ -19,37 +19,79 @@ ENGINE = InnoDB;
 	<!-- Member Have All Result -->
 	<!-- Site  -->
 	<resultMap type="joinSite" id="JoinSiteResult">
-		<result column="name" property="name"/>
-		<result column="createdAt" property="createdAt"/>
+		<id column="SiteId" property="id"/>
+		<result column="SiteName" property="name"/>
+		<result column="SiteCreatedAt" property="createdAt"/>
+		<result column="SiteCreatedAt" property="createdAt"/>
 	</resultMap>
 	
 	<!-- Plot -->
 	<resultMap type="joinPlot" id="JoinPlotResult">
-		
+		<id column="PlotId" property="id"/>
+		<result column="PlotName" property="name"/>
+		<result column="PlotCreatedAt" property="createdAt"/>
+		<result column="PlotCreatedAt" property="createdAt"/>
+	</resultMap>
+	<!-- Device -->
+	<resultMap type="joinDevice" id="JoinDeviceResult">
+		<id column="DeviceId" property="id"/>
+		<result column="DeviceName" property="name"/>
+		<result column="DeviceCreatedAt" property="createdAt"/>
+		<result column="DeviceCreatedAt" property="createdAt"/>
 	</resultMap>
 	<!--  Get All Data Use UserName Users, Sites, Plots, Devices,  -->
-	<resultMap type="joinUser" id="JoinUserPlotResult">
+ 
+	<resultMap type="joinUser" id="JoinAllUser">
 		<id column="id" property="id"/>
 		<result column="UserEmail" property="UserEmail"/>
 		<result column="UserName" property="UserName"/>
 		<result column="createdAt" property="createdAt"/>
 		<result column="updatedAt" property="updatedAt"/>
-		<!-- Site List -->
-		<collection property="joinSite" javaType="java.util.List" ofType="joinSite">
+		<!-- Property에는 위에 정의된 항목 중 선택 즉 위에는 현재 Site로 정의 되어 있음 ofType은 받을 형태의 정의  -->
+		<collection property="Site" javaType="java.util.List" ofType="joinSite">
 			<id column="siteId" property="id"/>
 			<result column="siteName" property="name"/>
 			<result column="siteCreatedAt" property="createdAt"/>
 			<result column="siteUpdatedAt" property="updatedAt"/>
-			<!-- Plot List -->
-			<collection property="joinPlot" javaType="java.util.List" ofType="joinPlot">
+			<collection property="plot" javaType="java.util.List" ofType="joinPlot">
 				<id column="plotId" property="id"/>
-				<result column="plotPlotName" property="PlotName"/>
-				<result column="plotSiteIdx" property="SiteIdx"/>
+				<result column="plotName" property="PlotName"/>
 				<result column="plotCreatedAt" property="createdAt"/>
 				<result column="plotUpdatedAt" property="updatedAt"/>	
+				<collection property="device" javaType="java.util.List" ofType="joinDevice">
+					<id column="DeviceId" property="id"/>
+					<result column="deviceName" property="name"/>
+				</collection>
 			</collection>
 		</collection>
 	</resultMap>
+ 
+	<!-- Get All Info -->
+	<select id="AdminDetailAllMember" parameterType="user" resultMap="JoinAllUser">
+		SELECT 
+			user.id,
+			user.UserEmail,
+			user.UserName,
+			user.UserLevel,
+			user.createdAt,
+			user.updatedAt,
+			site.id as siteId, 
+			site.name AS siteName,
+			site.createdAt AS siteCreatedAt,
+			site.updatedAt AS siteUpdatedAt,
+			plot.id AS plotId, 
+			plot.PlotName AS plotName,
+			plot.createdAt AS plotCreatedAt,
+			plot.updatedAt AS plotUpdatedAt,
+			device.id AS deviceId,
+			device.name AS deviceName 
+		FROM 
+			users AS user 
+		LEFT JOIN
+			sites as site
+		ON
+			user.UserEmail=site.Owner
+	</select>
 	<!-- Return Map Setting Call resultMap -->
 	<!-- 1 : 다 관계의 경우 데이터 매핑시켜준다. 
 		association => 1 : 1 관계 
