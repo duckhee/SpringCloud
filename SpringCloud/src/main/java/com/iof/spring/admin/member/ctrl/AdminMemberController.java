@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -39,7 +40,11 @@ public class AdminMemberController {
 	@Autowired
 	private AdminMemberService service;
 	
-	
+	@RequestMapping(value="")
+	public String AdminMemberMainPage() {
+		System.out.println("Admin Member Main Redirect Member List Page");
+		return "redirect:/admin/Members/list";
+	}
 	
 	
 	/**

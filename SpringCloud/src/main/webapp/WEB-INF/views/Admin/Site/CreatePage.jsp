@@ -221,7 +221,7 @@
                 				<div class='form-group'>
                 					<label for="" class="col-sm-2 control-label">Site Owner Email</label>
                 					<div class="col-sm-4">
-                						<input type='text' class='form-control' name='siteownerId' id='siteOwnerId' placeholder="Site Owner Email...">
+                						<input type='text' class='form-control' name='SiteOwnerEmail' id='SiteOwnerEmail' placeholder="Site Owner Email...">
                 					</div>
                 					<div class="col-sm-4">
                 						<input type="hidden" id="IdCheck">
@@ -235,7 +235,9 @@
                 				<div class="form-group">
                 					<label for="" class="col-sm-2 control-label">Site Name</label>
                 					<div class="col-sm-4">
-                						<input type="text" class='form-control' name='siteName' id='siteName' placeholder="Site Name ...">
+                						<select name="SiteCheckId" id="siteValue" class="form-control" disabled>
+                                            <option value>Select options ...</option>
+                                     </select>
                 					</div>
                 				</div>
                 				<!-- ./form-group -->
@@ -321,22 +323,53 @@
         		var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
         		return re.test(email);
     		}
+		
+		/** Function Get User Info */
+		function GetUserInfo(){
+			let _BaseUrl = "<c:url value='/admin/Members/'/>";
+			$.ajax({
+				url:'',
+				type:'post',
+				dataType:'json',
+				contentType:'application/json',
+				beforeSend:function(xhr){
+					xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}")
+				},
+				data:'',
+				success:function(data){
+					
+				},
+				error:function(request, status, error){					
+					return console.log("DELETE SITE CREATE ERROR");
+				}
+			});
+		}
 		/** Function Check Owner Email */
 		function EmailCheck(){
-			let _Owner = $("#siteownerId").val();
-			console.log("Owner Value : ", _Owner);
+			let _Owner = $("#SiteOwnerEmail").val();
 			if(!_Owner){
-				console.log("Value Null");
+				Swal.fire({
+					type:'warning',
+					title:'Input Owner Email'
+				});
+				return null;
+			}
+			if(!validateEmail(_Owner)){
+				Swal.fire({
+					type:'warning',
+					title:'Not Email Type'
+				});
 				return null;
 			}
 			return _Owner;
 		}
 		/** Function Owner Check */
 		function _OwnerCheck(_select){
-
 			$("#"+_select).click(function(){
 				console.log("User Check Btn Click");
-				EmailCheck();
+				if(EmailCheck()){
+					console.log("Email Check True");
+				}
 			});
 			
 		}
